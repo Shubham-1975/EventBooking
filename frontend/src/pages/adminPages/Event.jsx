@@ -95,7 +95,7 @@ const Event = () => {
             </thead>
             <tbody className="text-gray-700">
               {list?.map((event, index) => (
-                <tr key={index} className="hover:bg-gray-200">
+                <tr key={event._id} className="hover:bg-gray-200">
                   <td className="border border-gray-300 px-2 md:px-4 py-2">
                     {event?._id}
                   </td>

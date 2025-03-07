@@ -114,7 +114,7 @@ const FindVenue = ({ user }) => {
         <div className="max-w-[1150px] mx-auto mt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
           {venues?.map((value, index) => (
             <>
-              <div className="w-[350px] h-[450px] shadow-xl overflow-hidden rounded-xl">
+              <div className="w-[350px] h-[450px] shadow-xl overflow-hidden rounded-xl" key={value?._id}>
                 <img
                   src={value?.photos[0]}
                   alt=""

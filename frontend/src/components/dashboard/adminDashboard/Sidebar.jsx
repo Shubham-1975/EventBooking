@@ -95,7 +95,7 @@ const Sidebar = () => {
           </ul>
         </nav>
 
-        <style jsx>{`
+        <style jsx="true">{`
           .sidebar-item {
             display: flex;
             align-items: center;
