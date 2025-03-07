@@ -24,7 +24,7 @@ const Testimonials = () => {
     <div className="bg-[#161616] w-full sm:h-[80vh] h-[50vh] pt-[80px] relative">
       {/* Left Arrow */}
       <button
-        className="text-white text-[30px] md:text-[50px] rounded-[50%] bg-[#525151] absolute sm:left-[1%] sm:top-[39%] md:top-[54%] top-[40%] left-[3%] transform -translate-y-1/2 z-10"
+        className="text-white text-[30px] md:text-[50px] rounded-[50%] bg-[#525151] absolute sm:left-[1%] sm:top-[39%] md:top-[38%] top-[40%] left-[3%] transform -translate-y-1/2 z-10"
         onClick={scrollLeft}
       >
         <FaChevronLeft />
@@ -32,7 +32,7 @@ const Testimonials = () => {
 
       {/* Right Arrow */}
       <button
-        className="text-white text-[30px] md:text-[50px] rounded-[50%] bg-[#525151] absolute md:top-[54%] sm:right-[2%] sm:top-[39%] top-[40%] right-[5%] transform -translate-y-1/2 z-10"
+        className="text-white text-[30px] md:text-[50px] rounded-[50%] bg-[#525151] absolute md:top-[38%] sm:right-[2%] sm:top-[39%] top-[40%] right-[5%] transform -translate-y-1/2 z-10"
         onClick={scrollRight}
       >
         <FaChevronRight />

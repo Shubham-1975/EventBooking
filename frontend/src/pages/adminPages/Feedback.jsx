@@ -6,6 +6,7 @@ import axios from "axios"; // Ensure axios is imported
 import useFetch from "../../hooks/useFetch";
 import Sidebar from "../../components/dashboard/adminDashboard/Sidebar";
 import NavbarUpper from "../../components/dashboard/adminDashboard/NavbarUpper";
+import { toast } from "react-toastify";
 
 const Feedback = () => {
   let path = useLocation();
@@ -20,12 +21,13 @@ const Feedback = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8001/${path}/${id}`, {
+      await axios?.delete(`http://localhost:8001/${path}/${id}`, {
         withCredentials: true,
       });
-      setList((prevList) => prevList.filter((item) => item._id !== id));
+      setList((prevList) => prevList?.filter((item) => item?._id !== id));
+      toast.success("Deleted Succesfull!");
     } catch (error) {
-      console.error(error);
+      toast.error(error.response.data.error.message);
     }
   };
 

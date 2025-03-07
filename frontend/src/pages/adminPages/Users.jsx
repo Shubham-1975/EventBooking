@@ -6,10 +6,11 @@ import { IoEyeOutline } from "react-icons/io5";
 import { NavLink, useLocation } from "react-router-dom";
 import axios from "axios";
 import NavbarUpper from "../../components/dashboard/adminDashboard/NavbarUpper";
+import { toast } from "react-toastify";
 
 const Users = () => {
   let path = useLocation();
-  path = path.pathname.split("/")[1];
+  path = path?.pathname.split("/")[1];
   const { data, loading, error } = useFetch("http://localhost:8001/users");
 
   const [list, setList] = useState(data);
@@ -21,10 +22,11 @@ const Users = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8001/${path}/${id}`,{withCredentials:true});
-      setList(list.filter((item) => item?._id !== id));
+      await axios?.delete(`http://localhost:8001/${path}/${id}`,{withCredentials:true});
+      setList(list?.filter((item) => item?._id !== id));
+      toast.success("Deleted Succesfull!");
     } catch (error) {
-      console.log(error);
+      toast.error(err?.response?.data?.error);
     }
   };
 

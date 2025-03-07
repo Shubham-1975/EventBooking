@@ -1,69 +1,84 @@
-import React, { useEffect, useRef, useState } from "react";
-import img1 from "../../../assets/images/event3.avif";
-import img2 from "../../../assets/images/event2.avif";
-import img3 from "../../../assets/images/event3.avif";
+import React, { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import img from "../../../assets/images/groupImage.jpg";
+import { FaAngleDoubleRight } from "react-icons/fa";
+import useFetch from "../../../hooks/useFetch";
 
-const BiDirectionalCarousel = () => {
-  const images = [img1, img2, img3]; // Add more images if needed
-  const [scrollIndex, setScrollIndex] = useState(0);
-  const [direction, setDirection] = useState(1);
-  const [isReversingimg, setIsReversingimg] = useState(false); // 1 for right, -1 for left
-  const containerRef = useRef(null);
-
+const Services = () => {
+  const [list, setList] = useState([]);
+  const { data } = useFetch("http://localhost:8001/events");
   useEffect(() => {
-    const imageTimer = setInterval(() => {
-      setScrollIndex((prevIndex) => {
-        if (prevIndex === images.length - 1) {
-          setIsReversingimg(true);
-          return prevIndex - 1;
-        } else if (prevIndex === 0 && isReversingimg) {
-          setIsReversingimg(false);
-          return prevIndex + 1;
-        }
-        return isReversingimg ? prevIndex - 1 : prevIndex + 1;
-      });
-    }, 3000); // Change image every 1 second
-
-    return () => clearInterval(imageTimer); // Cleanup timer on unmount
-  }, [images.length, isReversingimg]);
-
-  useEffect(() => {
-    if (containerRef.current) {
-      containerRef.current.style.transform = `translate(-${
-        scrollIndex * 100
-      }%)`;
-      containerRef.current.style.transition = "transform 1s ease-in-out"; // Smooth scrolling effect
+    if (data) {
+      setList(data);
     }
-  }, [scrollIndex]);
+  }, [data]);
 
+  const navigate = useNavigate();
+  const handleOnClick = (index) => {
+    if (index === 0) {
+      navigate("/corporat-event");
+    } else if (index === 1) {
+      navigate("/wedding-planner");
+    } else if (index === 2) {
+      navigate("/destination-wedding");
+    } else if (index === 3) {
+      navigate("/beach-wedding");
+    } else if (index === 4) {
+      navigate("/music-entertainment");
+    } else if (index === 5) {
+      navigate("/private-party");
+    }
+  };
   return (
-    <div className="relative max-w[1200px] mx-auto sm:h-screen overflow-hidden">
-      <div
-        ref={containerRef}
-        className="flex w-full h-full"
-        style={{ width: `${images.length * 34}%`,backgroundColor: "transparent" }}
-      >
-        {images.map((image, index) => (
-          <div
-            key={index}
-            className="relative"
-            style={{
-              // backgroundImage: `url(${image})`,
-              flex: "0 0 100%",
-              backgroundColor: "grey"
-            }}
-          >
-            <img
-              src={image}
-              className=" inset-0 w-[1300px] sm:h-full h-[40vh] object-cover z-[-1] bg-no-repeat bg-contain"
-              alt="Background"
-            />
-            <h1 className="w-full bg-[#6d6c6c] z-[2] absolute bottom-[50%] text-[yellow] text-center text-2xl font-serif font-semibold">weddin Event</h1>
-          </div>
-        ))}
+    <>
+      <div className="max-w-[1100px] mx-auto bg-white">
+        <h1 className="text-[#af43ca] text-center text-lg font-semibold pt-11 ">
+          Our Services
+        </h1>
+        <h1 className="text-center text-4xl font-semibold pt-5">
+          Services by DreamAmbition® Event Management
+        </h1>
+        <p className="pt-5 text-[16px] leading-6 text-[#3e3d3d]">
+          DreamAmbition® Event Management is an ISO XXXX:2025 certified company
+          based in Bihar, East India. We specialize in delivering top-notch
+          event management services, including personal event planning,
+          corporate events, conferences, private parties, trade exhibitions,
+          virtual events, and stage shows across Bihar.{" "}
+          <NavLink className="text-[#af43ca]" to="/contact-us">
+            Get in touch with us for exceptional event experiences.
+          </NavLink>
+        </p>
+        <div className="pt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:pl-24 pl-14 lg:pl-10 gap-5 relative">
+          {list?.map((value, index) => (
+            <>
+              <div
+                className="w-[300px] h-[430px] shadow-lg rounded-lg overflow-hidden mb-4"
+                key={index}
+              >
+                <img
+                  src={value?.photos[5]}
+                  alt=""
+                  className=" object-fill h-[200px] w-[400px]"
+                />
+                <h1 className="pt-3 text-xl font-medium hover:text-[#af43ca] duration-500 text-center">
+                  <NavLink to="/corporat-event">{value?.title}</NavLink>
+                </h1>
+                <p className="pt-2 text-[16px] leading-6 text-[#3e3d3d] text-start px-4">
+                  {value?.desc}
+                </p>
+                <button
+                  className="!pt-10 text-[13px] leading-6 text-[#b14eca] hover:text-[#3e3d3d] text-start px-4 flex items-center gap-2 absolute"
+                  onClick={() => handleOnClick(index)}
+                >
+                  Learn More <FaAngleDoubleRight />
+                </button>
+              </div>
+            </>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default BiDirectionalCarousel;
+export default Services;

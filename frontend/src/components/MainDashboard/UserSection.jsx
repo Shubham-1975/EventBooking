@@ -4,7 +4,17 @@ import AuthComponent from "../dashboard/AuthComponent";
 import Home from "../../pages/userPages/Home";
 import Login from "../../pages/userPages/Login";
 import Register from "../../pages/userPages/Register";
+import ForgotPassword from "../../pages/userPages/ForgotPassword";
 import OurPortfolio from "../../pages/userPages/OurPortfolio";
+import BookEvent from "../../pages/userPages/BookEvent";
+import Contact from "../../pages/userPages/Contact";
+import CorporateEvent from "../dashboard/userDashboard/ServicesSection/CorporateEvent";
+import WeddingPlanner from "../dashboard/userDashboard/ServicesSection/WeddingPlanner";
+import DestinationWedding from "../dashboard/userDashboard/ServicesSection/DestinationWedding";
+import BeachWedding from "../dashboard/userDashboard/ServicesSection/BeachWedding";
+import MusicEntertainment from "../dashboard/userDashboard/ServicesSection/MusicEntertainment";
+import PrivateParty from "../dashboard/userDashboard/ServicesSection/PrivateParty";
+import FindVenue from "../dashboard/userDashboard/FindVenue";
 
 const UserSection = () => {
   return (
@@ -35,8 +45,54 @@ const UserSection = () => {
                       />
                     }
                   />
+                  <Route
+                    path="forgot-password"
+                    element={
+                      <ForgotPassword
+                        authLoading={loading}
+                        authError={error}
+                        authDispatch={authDispatch}
+                      />
+                    }
+                  />
                   <Route path="/register" element={<Register />} />
-                  <Route path="/ourportfolio" element={<OurPortfolio />} />
+                  <Route path="/contact-us" element={<Contact user={user} />} />
+                  <Route
+                    path="/ourportfolio"
+                    element={<OurPortfolio user={user} />}
+                  />
+                  <Route
+                    path="/corporat-event"
+                    element={<CorporateEvent user={user} />}
+                  />
+                  <Route
+                    path="/wedding-planner"
+                    element={<WeddingPlanner user={user} />}
+                  />
+                  <Route
+                    path="/destination-wedding"
+                    element={<DestinationWedding user={user} />}
+                  />
+                  <Route
+                    path="/beach-wedding"
+                    element={<BeachWedding user={user} />}
+                  />
+                  <Route
+                    path="/music-entertainment"
+                    element={<MusicEntertainment user={user} />}
+                  />
+                  <Route
+                    path="/private-party"
+                    element={<PrivateParty user={user} />}
+                  />
+                  <Route
+                    path="/find-venue"
+                    element={<FindVenue user={user} />}
+                  />
+                  <Route
+                    path="/book-event"
+                    element={<BookEvent user={user} />}
+                  />
                 </Routes>
               </BrowserRouter>
             </>

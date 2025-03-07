@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import homeimg from "../../assets/images/event7.webp";
-import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const Login = ({ authLoading, authError, authDispatch }) => {
   const [credentials, setCredentials] = useState({
@@ -25,18 +25,14 @@ const Login = ({ authLoading, authError, authDispatch }) => {
         { withCredentials: true } // Configuration object
       );
       authDispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
-      Swal.fire({
-        title: "Success!",
-        text: "Login successful!😍",
-        icon: "success",
-        confirmButtonText: "OK",
-      });
+      toast.success("Login Succesfull!");
       navigate("/");
     } catch (err) {
       authDispatch({
         type: "LOGIN_FAILURE",
         payload: err?.response?.data?.error,
       });
+      toast.error(err?.response?.data?.error);
     }
   };
 
@@ -89,13 +85,20 @@ const Login = ({ authLoading, authError, authDispatch }) => {
                 {authError}
               </span>
             )}
-
-            <Link to="/register">
-              <div className="flex gap-2 justify-center items-center pt-3 text-[15px]">
-                <p className="text-white">Not a Member ?</p>
-                <span className="text-blue-500"> Signup</span>
-              </div>
-            </Link>
+            <div className="flex items-center justify-between">
+              <Link to="/register">
+                <div className="flex gap-2 justify-center items-center text-[15px]">
+                  <p className="text-white">Not a Member ?</p>
+                  <span className="text-blue-500 hover:underline hover:scale-110 duration-500"> Signup</span>
+                </div>
+              </Link>
+              <Link
+                to="/forgot-password"
+                className="text-blue-500 hover:underline text-sm hover:scale-110 duration-500"
+              >
+                Forgot Password?
+              </Link>
+            </div>
           </div>
         </div>
       </div>

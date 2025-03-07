@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../../components/dashboard/adminDashboard/Sidebar";
 import NavbarUpper from "../../components/dashboard/adminDashboard/NavbarUpper";
+import { toast } from "react-toastify";
 
 const AddNewUser = ({ Inputs }) => {
   const [file, setFile] = useState("");
@@ -24,7 +25,7 @@ const AddNewUser = ({ Inputs }) => {
 
     try {
       setLoading(true);
-      const uploadRes = await axios.post(
+      const uploadRes = await axios?.post(
         "https://api.cloudinary.com/v1_1/domrjywcg/image/upload",
         data
       );
@@ -34,13 +35,14 @@ const AddNewUser = ({ Inputs }) => {
         img: url,
       };
 
-      await axios.post("http://localhost:8001/auth/register", newUser, {
+      await axios?.post("http://localhost:8001/auth/register", newUser, {
         withCredentials: true,
       });
+      toast.success("New User Added Succesfull!");
       setLoading(false);
       navigate("/users");
     } catch (error) {
-      alert(error.response.data.error.message);
+      toast.error(error.response.data.error.message);
       setLoading(false);
     }
   };

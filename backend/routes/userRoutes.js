@@ -32,7 +32,6 @@ const verifyUser = async (req, res, next) => {
 router.put("/:id", verifyUser, async (req, res, next) => {
   try {
     const updatedData = req.body;
-    console.log("before Updated");
     const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
       updatedData,
@@ -41,7 +40,7 @@ router.put("/:id", verifyUser, async (req, res, next) => {
         runValidators: true,
       }
     );
-    console.log("After updated");
+
     if (!updatedData) {
       return res.status(404).json({ error: "user not found" });
     }

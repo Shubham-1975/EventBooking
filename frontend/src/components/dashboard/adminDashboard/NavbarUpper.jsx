@@ -32,8 +32,9 @@ const NavbarUpper = () => {
           className="w-full outline-none text-base sm:text-lg font-semibold text-gray-700"
         />
       </div>
-      <div className="flex gap-4 sm:gap-6 items-center text-2xl">
-        <IoIosNotifications className="hover:text-gray-600 cursor-pointer" />
+      <div className="flex gap-4 sm:gap-6 items-center text-3xl">
+        <IoIosNotifications className=" relative hover:text-gray-600 cursor-pointer" />
+        <p className="absolute bg-[red] text-white text-sm rounded-[50%] h-4 w-4 flex items-center justify-center top-[4%] right-[163px]"> 1</p>
         <TbWorld className="hover:text-gray-600 cursor-pointer" />
         <PiSignOutFill
           className="hover:text-red-600 cursor-pointer"

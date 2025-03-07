@@ -7,6 +7,7 @@ import axios from "axios";
 import Sidebar from "../../components/dashboard/adminDashboard/Sidebar";
 import NavbarUpper from "../../components/dashboard/adminDashboard/NavbarUpper";
 import useFetch from "../../hooks/useFetch";
+import { toast } from "react-toastify";
 
 const Event = () => {
   let path = useLocation();
@@ -24,9 +25,11 @@ const Event = () => {
       await axios.delete(`http://localhost:8001/${path}/${id}`, {
         withCredentials: true,
       });
-      setList(list.filter((item) => item._id !== id));
+      toast.success("Deleted Succesfull!");
+      setList(list?.filter((item) => item?._id !== id));
+
     } catch (error) {
-      console.error(error);
+      toast.error(error.response.data.error.message);
     }
   };
 
@@ -45,9 +48,27 @@ const Event = () => {
           <span className="capitalize">{path}</span>
           <NavLink
             to={`/new-${path}`}
-            className="no-underline text-green-700 text-[16px] font-medium border border-green-700 p-2 rounded cursor-pointer hover:bg-green-600 hover:text-white"
+            className="no-underline text-green-700 text-[13px] font-smibold border border-green-700 p-2 rounded cursor-pointer hover:bg-green-600 hover:text-white duration-500"
           >
-            Add New
+            Add New Event
+          </NavLink>
+          <NavLink
+            to='/new-wedding-services'
+            className="no-underline text-green-700 text-[13px] font-smibold border border-green-700 p-2 rounded cursor-pointer hover:bg-green-600 hover:text-white duration-500"
+          >
+           Add Wedding Services
+          </NavLink>
+          <NavLink
+            to="/add-venue"
+            className="no-underline text-green-700 text-[13px] font-smibold border border-green-700 p-2 rounded cursor-pointer hover:bg-green-600 hover:text-white"
+          >
+            Add New Venue
+          </NavLink>
+          <NavLink
+            to='/add-blog'
+            className="no-underline text-green-700 text-[13px] font-smibold border border-green-700 p-2 rounded cursor-pointer hover:bg-green-600 hover:text-white"
+          >
+            Add New Blog
           </NavLink>
         </div>
         <div className="overflow-x-auto">
@@ -76,19 +97,19 @@ const Event = () => {
               {list?.map((event, index) => (
                 <tr key={index} className="hover:bg-gray-200">
                   <td className="border border-gray-300 px-2 md:px-4 py-2">
-                    {event._id}
+                    {event?._id}
                   </td>
                   <td className="border border-gray-300 px-2 md:px-4 py-2">
-                    {event.title}
+                    {event?.title}
                   </td>
                   <td className="border border-gray-300 px-2 md:px-4 py-2">
-                    {event.city}
+                    {event?.city}
                   </td>
                   <td className="border border-gray-300 px-2 md:px-4 py-2">
-                    {event.address}
+                    {event?.address}
                   </td>
                   <td className="border border-gray-300 px-2 md:px-4 py-2">
-                    {event.distance}
+                    {event?.distance}
                   </td>
                   <td className="border border-gray-300 px-2 md:px-4 py-2">
                     <div className="flex gap-2 md:gap-4 justify-center">

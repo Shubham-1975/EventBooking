@@ -4,9 +4,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../../components/dashboard/adminDashboard/Sidebar";
 import NavbarUpper from "../../components/dashboard/adminDashboard/NavbarUpper";
+import { toast } from "react-toastify";
 
 const AddEvent = ({ Inputs }) => {
-  const [file, setFile] = useState("");
+  const [files, setFiles] = useState("");
   const [info, setInfo] = useState({});
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -16,30 +17,36 @@ const AddEvent = ({ Inputs }) => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    e.stopPropagation();
-    const data = new FormData();
-    data.append("file", file);
-    data.append("upload_preset", "upload");
-
     try {
       setLoading(true);
-      const uploadRes = await axios.post(
-        "https://api.cloudinary.com/v1_1/domrjywcg/image/upload",
-        data
-      );
-      const { url } = uploadRes.data;
-      const newUser = {
-        ...info,
-        img: url,
-      };
+      const list = await Promise.all(
+        Object?.values(files)?.map(async (file) => {
+          const data = new FormData();
+          data.append("file", file);
+          data.append("upload_preset", "upload");
+          const uploadRes = await axios.post(
+            "https://api.cloudinary.com/v1_1/domrjywcg/image/upload",
+            data
+          );
 
-      await axios.post("http://localhost:8001/events", newUser, {
+          console.log(uploadRes);
+          const { url } = uploadRes.data;
+          return url;
+        })
+      );
+      const newEvent = {
+        ...info,
+        photos: list,
+      };
+      
+      await axios?.post("http://localhost:8001/events", newEvent, {
         withCredentials: true,
       });
+      toast.success("Event Added Succesfull!");
       setLoading(false);
       navigate("/events");
     } catch (error) {
-      alert(error.response.data.error.message);
+      toast.error(err?.response?.data?.error);
       setLoading(false);
     }
   };
@@ -63,8 +70,8 @@ const AddEvent = ({ Inputs }) => {
                 <img
                   className="rounded-[50%]  h-[100px] w-[100px]"
                   src={
-                    file
-                      ? URL?.createObjectURL(file)
+                    files
+                      ? URL?.createObjectURL(files[0])
                       : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
                   }
                   alt=""
@@ -88,7 +95,7 @@ const AddEvent = ({ Inputs }) => {
                       type="file"
                       id="file"
                       multiple
-                      onChange={(e) => setFile(e.target?.files[0])}
+                      onChange={(e) => setFiles(e.target.files)}
                       style={{ display: "none" }}
                     />
                   </div>

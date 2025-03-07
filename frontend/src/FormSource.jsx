@@ -36,36 +36,42 @@ export const userInputs = [
   },
 ];
 
-export const productInputs = [
+export const venueInput = [
   {
-    id: 1,
+    id: "title",
     label: "Title",
     type: "text",
-    placeholder: "Apple Macbook Pro",
+    placeholder: "Shubham Resort",
   },
   {
-    id: 2,
+    id: "city",
+    label: "City",
+    type: "text",
+    placeholder: "Patna",
+  },
+  {
+    id: "address",
+    label: "Address",
+    type: "text",
+    placeholder: "Boring Road",
+  },
+  {
+    id: "pincode",
+    label: "Pincode",
+    type: "number",
+    placeholder: "800013",
+  },
+  {
+    id: "desc",
     label: "Description",
     type: "text",
     placeholder: "Description",
   },
   {
-    id: 3,
-    label: "Category",
+    id: "type",
+    label: "Type",
     type: "text",
-    placeholder: "Computers",
-  },
-  {
-    id: 4,
-    label: "Price",
-    type: "text",
-    placeholder: "100",
-  },
-  {
-    id: 5,
-    label: "Stock",
-    type: "text",
-    placeholder: "in stock",
+    placeholder: "Venue Type Beach Wedding",
   },
 ];
 
@@ -108,29 +114,33 @@ export const EventInputs = [
   },
 ];
 
-export const roomInputs = [
+export const WeddingServices = [
   {
     id: "title",
     label: "Title",
     type: "text",
-    placeholder: "2 bed room",
+    placeholder: "Add Wedding Services",
+  },
+  {
+    id: "city",
+    label: "City",
+    type: "text",
+    placeholder: "Patna",
+  },
+];
+
+export const BlogInput = [
+  {
+    id: "title",
+    label: "Title",
+    type: "text",
+    placeholder: "Enter Title",
   },
   {
     id: "desc",
     label: "Description",
     type: "text",
-    placeholder: "King size bed, 1 bathroom",
+    placeholder: "Write Description",
   },
-  {
-    id: "price",
-    label: "Price",
-    type: "number",
-    placeholder: "100",
-  },
-  {
-    id: "maxPeople",
-    label: "Max People",
-    type: "number",
-    placeholder: "2",
-  },
+
 ];

@@ -6,10 +6,14 @@ import Users from "../../pages/adminPages/Users";
 import Event from "../../pages/adminPages/Event";
 import Feedback from "../../pages/adminPages/Feedback";
 import AddEvent from "../../pages/adminPages/AddEvent";
+import AddVenue from "../../pages/adminPages/AddVenue";
+
 import AddNewUser from "../../pages/adminPages/AddNewUser";
 import Booking from "../../pages/adminPages/Booking";
 import Login from "../../pages/userPages/Login";
-import { EventInputs, userInputs } from "../../FormSource";
+import { EventInputs, userInputs, WeddingServices,venueInput,BlogInput } from "../../FormSource";
+import AddWeddingPlanner from "../../pages/adminPages/AddWeddingPlanner";
+import AddBlog from "../../pages/adminPages/AddBlog";
 
 const AdminSection = () => {
   const ProtectRoute = ({ children, user }) => {
@@ -79,6 +83,35 @@ const AdminSection = () => {
                     element={
                       <ProtectRoute user={user}>
                         <AddEvent authLoading={loading} Inputs={EventInputs} />
+                      </ProtectRoute>
+                    }
+                  />
+
+                  <Route
+                    path="/add-venue"
+                    element={
+                      <ProtectRoute user={user}>
+                        <AddVenue authLoading={loading} Inputs={venueInput} />
+                      </ProtectRoute>
+                    }
+                  />
+                   <Route
+                    path="/add-blog"
+                    element={
+                      <ProtectRoute user={user}>
+                        <AddBlog authLoading={loading} Inputs={BlogInput} />
+                      </ProtectRoute>
+                    }
+                  />
+
+                  <Route
+                    path="/new-wedding-services"
+                    element={
+                      <ProtectRoute user={user}>
+                        <AddWeddingPlanner
+                          authLoading={loading}
+                          Inputs={WeddingServices}
+                        />
                       </ProtectRoute>
                     }
                   />
