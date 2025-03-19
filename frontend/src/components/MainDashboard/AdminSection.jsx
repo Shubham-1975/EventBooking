@@ -1,13 +1,12 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "../../pages/AdminPages/Home";
+import Home from "../../pages/adminPages/Home";
 import AuthComponent from "../dashboard/AuthComponent";
 import Users from "../../pages/adminPages/Users";
 import Event from "../../pages/adminPages/Event";
 import Feedback from "../../pages/adminPages/Feedback";
 import AddEvent from "../../pages/adminPages/AddEvent";
 import AddVenue from "../../pages/adminPages/AddVenue";
-
 import AddNewUser from "../../pages/adminPages/AddNewUser";
 import Booking from "../../pages/adminPages/Booking";
 import Login from "../../pages/userPages/Login";

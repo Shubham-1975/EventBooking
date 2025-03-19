@@ -16,7 +16,7 @@ const Services = () => {
   const navigate = useNavigate();
   const handleOnClick = (index) => {
     if (index === 0) {
-      navigate("/corporat-event");
+      navigate("/corporate-event");
     } else if (index === 1) {
       navigate("/wedding-planner");
     } else if (index === 2) {
@@ -52,7 +52,7 @@ const Services = () => {
         <div className="pt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:pl-24 pl-14 lg:pl-10 gap-5 relative">
           {list?.map((value, index) => (
             <div
-              className="w-[300px] h-[430px] shadow-lg rounded-lg overflow-hidden mb-4"
+              className="w-[300px] h-[430px] shadow-lg rounded-lg overflow-hidden mb-4 hover:scale-105 duration-200"
               key={value?._id}
             >
               <img

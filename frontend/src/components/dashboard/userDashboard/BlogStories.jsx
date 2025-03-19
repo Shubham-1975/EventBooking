@@ -31,7 +31,7 @@ const BlogStories = () => {
         <div className="pt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:pl-24 pl-14 lg:pl-10 gap-5 relative">
           {list?.map((value, index) => (
             <div
-              className="w-[300px] h-[430px] shadow-lg rounded-lg overflow-hidden mb-4"
+              className="w-[300px] h-[430px] shadow-lg rounded-lg overflow-hidden mb-4 hover:shadow-2xl duration-300"
               key={value?._id}
             >
               <img

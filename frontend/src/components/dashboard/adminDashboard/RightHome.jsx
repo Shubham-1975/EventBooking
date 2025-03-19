@@ -1,9 +1,63 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../dashboard/adminDashboard/Navbar";
 import NavbarUpper from "../../dashboard/adminDashboard/NavbarUpper";
-import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, Tooltip } from "recharts";
+import {
+  ResponsiveContainer,
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+} from "recharts";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const RightHome = () => {
+  const [users, setUsers] = useState([]);
+  const [bookEvent, setBookEvent] = useState([]);
+  const [venue, setVenues] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [usersResponse, bookEventResponse, venueResponse] =
+          await Promise.all([
+            axios.get("http://localhost:8001/users", { withCredentials: true }),
+            axios.get("http://localhost:8001/eventbooks", {
+              withCredentials: true,
+            }),
+            axios.get("http://localhost:8001/venue", { withCredentials: true }),
+          ]);
+        setUsers(usersResponse.data);
+        setBookEvent(bookEventResponse.data);
+        setVenues(venueResponse.data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const allusers = users.length;
+  const allBooking = bookEvent.length;
+  const allVenue = venue.length;
+
+  const navigate = useNavigate();
+
+  const handleOnClick = (index) => {
+    if (index == 0) {
+      navigate("/users");
+    } else if (index == 1) {
+      navigate("/booking");
+    } else if (index == 2) {
+      navigate("/allvenue");
+    }
+  };
+
   const data = [
     { name: "Jan", revenue: 4000 },
     { name: "Feb", revenue: 3000 },
@@ -52,14 +106,15 @@ const RightHome = () => {
         {/* Stats Section */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
           {[
-            { title: "Users", value: "1,254", color: "bg-blue-500" },
-            { title: "Orders", value: "732", color: "bg-green-500" },
-            { title: "Earnings", value: "₹34,12,540", color: "bg-yellow-500" },
+            { title: "All Users", value: allusers, color: "bg-blue-500" },
+            { title: "All Bookings", value: allBooking, color: "bg-green-500" },
+            { title: "All Venues", value: allVenue, color: "bg-yellow-500" },
             { title: "Balance", value: "₹24,320", color: "bg-purple-500" },
           ].map((stat, index) => (
             <div
               key={index}
               className={`${stat.color} p-4 text-white rounded-xl shadow-md`}
+              onClick={() => handleOnClick(index)}
             >
               <h2 className="text-lg font-semibold">{stat.title}</h2>
               <p className="text-2xl font-bold">{stat.value}</p>

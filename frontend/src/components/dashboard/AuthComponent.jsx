@@ -50,7 +50,7 @@ const AuthComponent = ({ children }) => {
   const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
   useEffect(() => {
     try {
-      localStorage?.setItem("user", JSON.stringify(state?.user));
+      localStorage.setItem("user", JSON.stringify(state.user));
     } catch (error) {
       console.error("Failed to update user in localStorage:", error);
     }

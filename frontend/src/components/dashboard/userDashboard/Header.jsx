@@ -7,6 +7,9 @@ import Testimonials from "../../dashboard/userDashboard/Testimonials";
 import FrontSection2 from "./FrontSection2";
 import Section4Booking from "./Section4Booking";
 import BlogStories from "./BlogStories";
+import FeedBackSuggection from "./FeedBackSuggection";
+import Question from "./Question";
+import Maps from "./Maps";
 
 const Header = () => {
   return (
@@ -17,7 +20,10 @@ const Header = () => {
       <Section4Booking />
       <BlogStories />
       <Experience />
-      <Testimonials />
+      <FeedBackSuggection />
+      <Question />
+      <Maps />
+      {/* <Testimonials /> */}
     </>
   );
 };

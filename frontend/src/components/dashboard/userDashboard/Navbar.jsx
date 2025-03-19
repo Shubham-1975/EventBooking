@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import logo from "../../../assets/images/event5.png";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import img from "../../../assets/images/user3.png";
 import axios from "axios";
 import { MdOutlineCameraAlt } from "react-icons/md";
@@ -76,7 +76,7 @@ const Navbar = ({ user, authDispatch }) => {
         { img: url },
         { withCredentials: true }
       );
-      console.log(updatedImage);
+     
       // Update the global user state with the new profile image
       // Clear the file input
       authDispatch({ type: "LOGIN_SUCCESS", payload: updatedImage.data });
@@ -150,15 +150,15 @@ const Navbar = ({ user, authDispatch }) => {
                 Services <FaSortDown />
               </span>
               {isServices && (
-                <div className="absolute left-0 mt-2 w-56 bg-white bg-opacity-10 shadow-lg rounded-lg py-2 text-white text-[14px] backdrop-blur-md">
+                <div className="absolute left-0 mt-2 w-56 bg-black bg-opacity-10 shadow-lg rounded-lg py-2 text-[#7a2399] text-[14px] backdrop-blur-md">
                   <NavLink
                     style={navLinkStyles}
-                    to="/corporat-event"
+                    to="/corporate-event"
                     className={`block px-4 py-3 transition-all duration-300 rounded-t-lg 
           ${
             activeMenu === "Corporate"
-              ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
-              : "hover:bg-gray-800 hover:text-yellow-400"
+              ? "bg-[#636262] bg-opacity-20 text-[#7a2399]"
+              : "hover:bg-gray-800 hover:text-[#7a2399]"
           }`}
                     onMouseEnter={() => handleActiveMenu("Corporate")}
                     onMouseLeave={() => handleActiveMenu("")}
@@ -342,9 +342,9 @@ const Navbar = ({ user, authDispatch }) => {
               </NavLink>
             </li>
             <li className="relative group hover:scale-110 hover:duration-300">
-              <a href="#contact" className="hover:text-yellow-500">
+              <NavLink to="/contact-us" style={navLinkStyles} className="hover:text-yellow-500">
                 Contact
-              </a>
+              </NavLink>
               {/* <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-yellow-500 transition-all duration-300 group-hover:w-full"></span> */}
             </li>
             <li className="relative">
@@ -635,7 +635,7 @@ const Navbar = ({ user, authDispatch }) => {
                   </NavLink>
                 </li>
                 <li className="py-2 hover:text-yellow-500">
-                  <a href="#contact">Contact</a>
+                  <NavLink to="/contact-us" style={navLinkStyles}>Contact</NavLink>
                 </li>
               </ul>
             )}

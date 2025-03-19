@@ -275,7 +275,7 @@ const Footer = () => {
         </div>
         <hr className="max-w-[1000px] mx-auto border-t border-white pt-4" />
       </div>
-      <h1 className="text-[#c0bbbb] sm:text-[15px] text-[13px] absolute bottom-[8px] md:bottom-[1%] text-center md:left-[28%] left-4 lg:left-[33%] lg:bottom-[2%]">© {new Date().getFullYear()} Melodia Event Management. All Rights Reserved.</h1>
+      <h1 className="text-[#c0bbbb] sm:text-[15px] text-[13px] absolute bottom-[8px] md:bottom-[1%] text-center md:left-[28%] left-4 lg:left-[33%] lg:bottom-[2%]">© {new Date().getFullYear()} Dream AmbitionEvent Management. All Rights Reserved.</h1>
       <h1 className="text-[#706e6e] sm:text-[15px] text-[13px] absolute bottom-[9%] md:bottom-[1%] text-center pl-[25%] right-2">😍Shubham Rawat😍</h1>
     </div>
   );

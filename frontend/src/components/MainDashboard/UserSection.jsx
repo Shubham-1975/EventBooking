@@ -62,7 +62,7 @@ const UserSection = () => {
                     element={<OurPortfolio user={user} />}
                   />
                   <Route
-                    path="/corporat-event"
+                    path="/corporate-event"
                     element={<CorporateEvent user={user} />}
                   />
                   <Route
@@ -89,10 +89,7 @@ const UserSection = () => {
                     path="/find-venue"
                     element={<FindVenue user={user} />}
                   />
-                  <Route
-                    path="/book-event"
-                    element={<BookEvent user={user} />}
-                  />
+                  <Route path="/book-event/:id" element={<BookEvent user={user} />} />
                 </Routes>
               </BrowserRouter>
             </>

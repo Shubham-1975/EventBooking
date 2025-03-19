@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
+import googleLogo from '../../../assets/images/logogoogle.png'
 
 const Testimonials = () => {
   const containerRef = useRef(null);
@@ -21,10 +22,12 @@ const Testimonials = () => {
 
   const ratings = [5, 4, 3, 4, 5, 2];
   return (
-    <div className="bg-[#161616] w-full sm:h-[80vh] h-[50vh] pt-[80px] relative">
+    <div className="bg-white w-full sm:h-[80vh] h-[50vh] pt-[80px] relative">
+      <h1 className="text-[#af43ca] text-center text-lg font-semibold pt-11">Client Testimonials</h1>
+      <h1 className="text-[#232323] text-3xl text-center py-5 font-bold ">See What our Clients has to Say</h1>
       {/* Left Arrow */}
       <button
-        className="text-white text-[30px] md:text-[50px] rounded-[50%] bg-[#525151] absolute sm:left-[1%] sm:top-[39%] md:top-[38%] top-[40%] left-[3%] transform -translate-y-1/2 z-10"
+        className="text-white text-[30px] lg:bottom-[16%] md:text-[50px] rounded-[50%] bg-[#525151] absolute md:bottom-[40%] transform -translate-y-1/2 z-10 bottom-[20%] left-5 md:left-2"
         onClick={scrollLeft}
       >
         <FaChevronLeft />
@@ -32,14 +35,14 @@ const Testimonials = () => {
 
       {/* Right Arrow */}
       <button
-        className="text-white text-[30px] md:text-[50px] rounded-[50%] bg-[#525151] absolute md:top-[38%] sm:right-[2%] sm:top-[39%] top-[40%] right-[5%] transform -translate-y-1/2 z-10"
+        className="text-white text-[30px] lg:bottom-[16%] md:text-[50px] rounded-[50%] bg-[#525151] absolute md:bottom-[62%]  bottom-[50%] right-[5%] md:right-2 transform -translate-y-1/2 z-10"
         onClick={scrollRight}
       >
         <FaChevronRight />
       </button>
 
       {/* Card Wrapper */}
-      <div className="sm:max-w-[1140px] max-w-[270px] mx-auto overflow-hidden relative">
+      <div className="sm:max-w-[1140px] max-w-[270px] mx-auto overflow-hidden relative py-10">
         {/* Card Container */}
         <div
           ref={containerRef}
@@ -54,8 +57,10 @@ const Testimonials = () => {
             .map((_, index) => (
               <div
                 key={index}
-                className="text-white h-[200px] w-[260px] md:w-[320px] text-center bg-[#3e3c3c] rounded-[12px] flex-shrink-0"
+                className="text-black h-[200px] w-[260px] md:w-[320px] text-center bg-white  rounded-[12px] flex-shrink-0 shadow-lg overflow-hidden border hover:shadow-xl duration-300"
               >
+              <img src={googleLogo} className="h-10 w-10 absolute top-2 right-10" alt="" />
+
                 <h1 className="text-white text-[16px] md:text-[20px] font-semibold">
                   Shubham
                 </h1>
@@ -72,6 +77,7 @@ const Testimonials = () => {
                         } text-sm sm:text-base`}
                       />
                     ))}
+                    
                 </div>
                 <p className="text-sm md:text-base">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
@@ -80,22 +86,12 @@ const Testimonials = () => {
                   reiciendis consequuntur consectetur assumenda.
                 </p>
               </div>
+              
             ))}
         </div>
+        
       </div>
-      <div className="flex justify-center mt-6">
-        {Array(6/2+1)
-          .fill()
-          .map((_, index) => (
-            <div
-              key={index}
-              className={`h-3 w-3 rounded-full mx-2 cursor-pointer ${
-                scrollIndex === index ? "bg-yellow-500" : "bg-gray-500"
-              }`}
-              onClick={() => handleDotClick(index)}
-            ></div>
-          ))}
-      </div>
+      
     </div>
   );
 };

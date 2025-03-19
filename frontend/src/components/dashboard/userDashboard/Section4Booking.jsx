@@ -40,7 +40,7 @@ const Section4Booking = () => {
   }, [Photography]);
 
   return (
-    <div className="max-w-screen-lg mx-auto bg-[#970fd7] rounded-xl my-10 lg:p-5 py-10 p-10 flex flex-wrap lg:flex-nowrap items-center justify-center gap-6">
+    <div className="max-w-screen-lg mx-auto bg-[#7a2399] rounded-xl my-10 lg:p-5 py-10 p-10 flex flex-wrap lg:flex-nowrap items-center justify-center gap-6">
       {/* Image Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5 flex-auto lg:w-96 w-full px-4">
         {Photography.map((images, i) => (
