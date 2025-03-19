@@ -6,7 +6,7 @@ import useFetch from "../../../hooks/useFetch";
 
 const Services = () => {
   const [list, setList] = useState([]);
-  const { data } = useFetch("http://localhost:8001/events");
+  const { data } = useFetch(`${import.meta.env.VITE_SERVER}/events`);
   useEffect(() => {
     if (data) {
       setList(data);

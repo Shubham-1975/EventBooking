@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 
 const Section4Booking = () => {
-  const { data } = useFetch("http://localhost:8001/events");
+  const { data } = useFetch(`${import.meta.env.VITE_SERVER}/events`);
   const [list, setList] = useState([]);
   const [imageIndexes, setImageIndexes] = useState([0, 0, 0, 0]);
 

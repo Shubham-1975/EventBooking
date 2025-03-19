@@ -13,7 +13,7 @@ const Sidebar = () => {
   const handleLogOut = async (e) => {
     e.preventDefault();
     try {
-      await axios.get("http://localhost:8001/auth/logout", { withCredentials: true });
+      await axios.get(`${import.meta.env.VITE_SERVER}/auth/logout`, { withCredentials: true });
       navigate("/login");
     } catch (error) {
       console.error("Error during logout", error);

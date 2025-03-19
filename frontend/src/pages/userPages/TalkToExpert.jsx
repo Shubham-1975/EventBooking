@@ -18,7 +18,7 @@ const TalkToExpert = ({ setShowForm }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8001/get-pricing", credentials, {
+      await axios.post(`${import.meta.env.VITE_SERVER}/get-pricing`, credentials, {
         withCredentials: true,
       });
       setCredentials(" ");

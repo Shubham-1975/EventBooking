@@ -36,7 +36,7 @@ const AddVenue = ({ Inputs }) => {
         ...info,
         photos: list,
       };
-      await axios?.post("http://localhost:8001/venue", newEvent, {
+      await axios?.post(`${import.meta.env.VITE_SERVER}/venue`, newEvent, {
         withCredentials: true,
       });
       toast.success("New Venue Added Succesfull!");

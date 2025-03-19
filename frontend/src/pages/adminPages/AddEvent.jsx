@@ -39,7 +39,7 @@ const AddEvent = ({ Inputs }) => {
         photos: list,
       };
       
-      await axios?.post("http://localhost:8001/events", newEvent, {
+      await axios?.post(`${import.meta.env.VITE_SERVER}/events`, newEvent, {
         withCredentials: true,
       });
       toast.success("Event Added Succesfull!");

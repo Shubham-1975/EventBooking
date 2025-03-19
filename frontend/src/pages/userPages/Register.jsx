@@ -22,7 +22,7 @@ const Register = ({ authLoading, authError, authDispatch }) => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:8001/auth/register",
+        `${import.meta.env.VITE_SERVER}/auth/register`,
         credentials,
         { withCredentials: true }
       );

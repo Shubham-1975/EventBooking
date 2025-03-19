@@ -37,7 +37,7 @@ const AddWeddingPlanner = ({ Inputs }) => {
         ...info,
         photos: list,
       };
-      await axios?.post("http://localhost:8001/wedding-planner", newEvent, {
+      await axios?.post(`${import.meta.env.VITE_SERVER}/wedding-planner`, newEvent, {
         withCredentials: true,
       });
       toast.success("New Wedding Add Succesfull!");

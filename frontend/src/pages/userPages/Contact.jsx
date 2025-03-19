@@ -33,7 +33,7 @@ const Contact = ({user}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8001/get-touch", credentials, {
+      await axios.post(`${import.meta.env.VITE_SERVER}/get-touch`, credentials, {
         withCredentials: true,
       });
       toast.success("✅ Message sent! We'll contact you soon.");

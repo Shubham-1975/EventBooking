@@ -6,7 +6,7 @@ import TalkToExpert from "../../../pages/userPages/TalkToExpert";
 
 const FrontSection2 = () => {
   const [showForm, setShowForm] = useState(false);
-  const { data } = useFetch("http://localhost:8001/events");
+  const { data } = useFetch(`${import.meta.env.VITE_SERVER}/events`);
   const [list, setList] = useState([]);
   const [imageIndexes, setImageIndexes] = useState([0, 0, 0, 0]); // Track index for each container
 

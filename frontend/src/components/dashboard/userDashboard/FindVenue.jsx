@@ -28,9 +28,9 @@ const FindVenue = ({ user }) => {
       try {
         const [venueResponse, cityResponse, venueTypeResponse] =
           await Promise.all([
-            axios.get("http://localhost:8001/venue" ,{ withCredentials: true }),
-            axios.get("http://localhost:8001/venue/cities" ,{ withCredentials: true }),
-            axios.get("http://localhost:8001/venue/venue-type" ,{ withCredentials: true }),
+            axios.get(`${import.meta.env.VITE_SERVER}/venue` ,{ withCredentials: true }),
+            axios.get(`${import.meta.env.VITE_SERVER}/venue/cities` ,{ withCredentials: true }),
+            axios.get(`${import.meta.env.VITE_SERVER}/venue/venue-type` ,{ withCredentials: true }),
           ]);
         setVenues(venueResponse.data);
         setCities(cityResponse.data);

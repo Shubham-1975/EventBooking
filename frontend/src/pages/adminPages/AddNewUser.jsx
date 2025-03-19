@@ -35,7 +35,7 @@ const AddNewUser = ({ Inputs }) => {
         img: url,
       };
 
-      await axios?.post("http://localhost:8001/auth/register", newUser, {
+      await axios?.post(`${import.meta.env.VITE_SERVER}/auth/register`, newUser, {
         withCredentials: true,
       });
       toast.success("New User Added Succesfull!");

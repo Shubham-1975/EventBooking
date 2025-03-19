@@ -13,7 +13,7 @@ const NavbarUpper = () => {
     e.preventDefault();
     e.stopPropagation();
     try {
-      await axios.get("http://localhost:8001/auth/logout", {
+      await axios.get(`${import.meta.env.VITE_SERVER}/auth/logout`, {
         withCredentials: true,
       });
       navigate("/login");

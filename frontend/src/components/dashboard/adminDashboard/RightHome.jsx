@@ -24,11 +24,11 @@ const RightHome = () => {
       try {
         const [usersResponse, bookEventResponse, venueResponse] =
           await Promise.all([
-            axios.get("http://localhost:8001/users", { withCredentials: true }),
-            axios.get("http://localhost:8001/eventbooks", {
+            axios.get(`${import.meta.env.VITE_SERVER}/users`, { withCredentials: true }),
+            axios.get(`${import.meta.env.VITE_SERVER}/eventbooks`, {
               withCredentials: true,
             }),
-            axios.get("http://localhost:8001/venue", { withCredentials: true }),
+            axios.get(`${import.meta.env.VITE_SERVER}/venue`, { withCredentials: true }),
           ]);
         setUsers(usersResponse.data);
         setBookEvent(bookEventResponse.data);

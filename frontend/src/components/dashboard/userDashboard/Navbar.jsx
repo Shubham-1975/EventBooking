@@ -30,7 +30,7 @@ const Navbar = ({ user, authDispatch }) => {
   const handleSignOut = async (e) => {
     e.preventDefault();
     try {
-      await axios?.get("http://localhost:8001/auth/logout", {
+      await axios?.get(`${import.meta.env.VITE_SERVER}/auth/logout`, {
         withCredentials: true,
       });
       navigate("/login");
@@ -72,7 +72,7 @@ const Navbar = ({ user, authDispatch }) => {
 
       // Update the user's profile with the new image
       const updatedImage = await axios.put(
-        `http://localhost:8001/users/${user?._id}`,
+        `${import.meta.env.VITE_SERVER}/users/${user?._id}`,
         { img: url },
         { withCredentials: true }
       );

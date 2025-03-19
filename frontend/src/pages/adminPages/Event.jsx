@@ -13,7 +13,7 @@ const Event = () => {
   let path = useLocation();
   path = path.pathname.split("/")[1];
 
-  const { data, loading, error } = useFetch("http://localhost:8001/events");
+  const { data, loading, error } = useFetch(`${import.meta.env.VITE_SERVER}/events`);
   const [list, setList] = useState(data);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const Event = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8001/${path}/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_SERVER}/${path}/${id}`, {
         withCredentials: true,
       });
       toast.success("Deleted Succesfull!");

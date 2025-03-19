@@ -21,7 +21,7 @@ const FeedBackSuggection = () => {
   const handleSubmitsug = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8001/suggestions", {
+      const response = await axios.post(`${import.meta.env.VITE_SERVER}/suggestions`, {
         suggestion,
       });
       setMessage("Thank you for your suggestion!");
@@ -45,7 +45,7 @@ const FeedBackSuggection = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8001/feedback", credentials, {
+      await axios.post(`${import.meta.env.VITE_SERVER}/feedback`, credentials, {
         withCredentials: true,
       });
       Swal.fire({

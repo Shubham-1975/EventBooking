@@ -37,7 +37,7 @@ const AddBlog = ({ Inputs }) => {
         ...info,
         photos: list,
       };
-      await axios.post("http://localhost:8001/blog", newEvent, {
+      await axios.post(`${import.meta.env.VITE_SERVER}/blog`, newEvent, {
         withCredentials: true,
       });
       setLoading(false);

@@ -13,7 +13,7 @@ const ForgotPassword = ({ authLoading, authError, authDispatch }) => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:8001/auth/forgot-password",
+        `${import.meta.env.VITE_SERVER}/auth/forgot-password`,
         { email },
         { withCredentials: true }
       );
@@ -28,7 +28,7 @@ const ForgotPassword = ({ authLoading, authError, authDispatch }) => {
 
   const handleResetPassword = async () => {
     try {
-      await axios.post("http://localhost:8001/auth/reset-password", {
+      await axios.post(`${import.meta.env.VITE_SERVER}/auth/reset-password`, {
         email,
         otp,
         newPassword,

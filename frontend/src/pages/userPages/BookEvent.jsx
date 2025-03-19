@@ -8,7 +8,7 @@ import { useLocation, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const BookEvent = ({ user }) => {
-  const { data } = useFetch("http://localhost:8001/eventbooks");
+  const { data } = useFetch(`${import.meta.env.VITE_SERVER}/eventbooks`);
   const [list, setList] = useState([]);
 
   const { id } = useParams(); // Get venue ID from URL
@@ -88,7 +88,7 @@ const BookEvent = ({ user }) => {
       return;
     }
     try {
-      await axios.post("http://localhost:8001/eventbooks", formData, {
+      await axios.post("${import.meta.env.VITE_SERVER}/eventbooks", formData, {
         withCredentials: true,
       });
       toast.success("Your event booking is successful!");

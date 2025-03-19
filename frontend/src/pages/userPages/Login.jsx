@@ -20,7 +20,7 @@ const Login = ({ authLoading, authError, authDispatch }) => {
     authDispatch({ type: "LOGIN_START" });
     try {
       const res = await axios.post(
-        "http://localhost:8001/auth/login",
+        `${import.meta.env.VITE_SERVER}/auth/login`,
         credentials, // Correctly send credentials as data
         { withCredentials: true } // Configuration object
       );

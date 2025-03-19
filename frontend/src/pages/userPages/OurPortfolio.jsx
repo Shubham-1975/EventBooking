@@ -5,7 +5,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 const OurPortfolio = ({user}) => {
-  const { data, loading, error } = useFetch("http://localhost:8001/events");
+  const { data, loading, error } = useFetch(`${import.meta.env.VITE_SERVER}/events`);
   const [list, setList] = useState([]);
 
   useEffect(() => {

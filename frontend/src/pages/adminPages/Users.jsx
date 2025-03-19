@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 const Users = () => {
   let path = useLocation();
   path = path?.pathname.split("/")[1];
-  const { data, loading, error } = useFetch("http://localhost:8001/users");
+  const { data, loading, error } = useFetch(`${import.meta.env.VITE_SERVER}/users`);
 
   const [list, setList] = useState(data);
   useEffect(() => {
@@ -22,7 +22,7 @@ const Users = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios?.delete(`http://localhost:8001/${path}/${id}`,{withCredentials:true});
+      await axios?.delete(`${import.meta.env.VITE_SERVER}/${path}/${id}`,{withCredentials:true});
       setList(list?.filter((item) => item?._id !== id));
       toast.success("Deleted Succesfull!");
     } catch (error) {

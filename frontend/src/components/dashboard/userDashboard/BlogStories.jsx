@@ -5,7 +5,7 @@ import { FaAngleDoubleRight } from "react-icons/fa";
 import useFetch from "../../../hooks/useFetch";
 
 const BlogStories = () => {
-  const { data } = useFetch("http://localhost:8001/blog");
+  const { data } = useFetch(`${import.meta.env.VITE_SERVER}/blog`);
   const [list, setList] = useState([]);
   useEffect(() => {
     if (data) {
