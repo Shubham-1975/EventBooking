@@ -6,7 +6,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import TalkToExpert from "../../../pages/userPages/TalkToExpert";
-import BookEvent from "../../../pages/userPages/BookEvent";
+
 import homeimg from "../../../assets/images/mandup1.jpg";
 import { NavLink, useNavigate } from "react-router-dom";
 

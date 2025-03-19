@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import img from "../../../assets/images/HaldiPlanner.jpg";
 import { NavLink } from "react-router-dom";
 import { FaAngleDoubleRight } from "react-icons/fa";
 import useFetch from "../../../hooks/useFetch";

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
-import homeimg from "../../../../assets/images/Corporate1.jpg";
+import homeimg from "../../../../assets/images/corporate1.jpg";
 import corporateImg from "../../../../assets/images/corporate10.jpg";
 import { FaWhatsapp } from "react-icons/fa";
 import { MdOutlineWifiCalling3 } from "react-icons/md";
