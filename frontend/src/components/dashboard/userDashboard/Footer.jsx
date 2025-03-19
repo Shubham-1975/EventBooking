@@ -1,5 +1,5 @@
 import React from "react";
-import FooterImg from "../../../assets/images/footerimage.jpg";
+import FooterImg from "../../../assets/images/footerImage.jpg";
 import logo from "../../../assets/images/event5.png";
 import { NavLink } from "react-router-dom";
 import { IoLocationSharp } from "react-icons/io5";
