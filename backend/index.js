@@ -19,7 +19,7 @@ const blogRoutes = require('./routes/blogRoutes')
 
 app.use(cookieParser());
 app.use(cors({
-  origin:"http://localhost:5173",
+  origin:"https://dreamambition-nu.vercel.app",
   credentials:true
 }));
 app.use(express.json());
