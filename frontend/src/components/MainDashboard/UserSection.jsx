@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import AuthComponent from "../dashboard/AuthComponent";
 import Home from "../../pages/userPages/Home";
 import Login from "../../pages/userPages/Login";
@@ -15,6 +16,15 @@ import BeachWedding from "../dashboard/userDashboard/ServicesSection/BeachWeddin
 import MusicEntertainment from "../dashboard/userDashboard/ServicesSection/MusicEntertainment";
 import PrivateParty from "../dashboard/userDashboard/ServicesSection/PrivateParty";
 import FindVenue from "../dashboard/userDashboard/FindVenue";
+import YourBooking from "../dashboard/userDashboard/YourBooking";
+import VenueIdShow from "../../pages/userPages/VenueIdShow";
+
+const ProtectedRoute = ({ user, children }) => {
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+  return children;
+};
 
 const UserSection = () => {
   return (
@@ -89,7 +99,33 @@ const UserSection = () => {
                     path="/find-venue"
                     element={<FindVenue user={user} />}
                   />
-                  <Route path="/book-event/:id" element={<BookEvent user={user} />} />
+                  {/* need Login */}
+
+                  <Route
+                    path="/book-event/:id"
+                    element={
+                      <ProtectedRoute user={user}>
+                        <BookEvent user={user} />
+                      </ProtectedRoute>
+                    }
+                  />
+
+                  <Route
+                    path="find/:id"
+                    element={
+                      <ProtectedRoute user={user}>
+                        <VenueIdShow user={user} />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/yourbooking"
+                    element={
+                      <ProtectedRoute user={user}>
+                        <YourBooking user={user} />
+                      </ProtectedRoute>
+                    }
+                  />
                 </Routes>
               </BrowserRouter>
             </>

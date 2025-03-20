@@ -48,6 +48,7 @@ const BookEvent = ({ user }) => {
     venueTitle: venue?.title || "",
     venueType: venue?.type || "",
     venueId: venue?._id,
+    userId: user?._id
   });
 
   useEffect(() => {
@@ -88,7 +89,7 @@ const BookEvent = ({ user }) => {
       return;
     }
     try {
-      await axios.post("${import.meta.env.VITE_SERVER}/eventbooks", formData, {
+      await axios.post(`${import.meta.env.VITE_SERVER}/eventbooks`, formData, {
         withCredentials: true,
       });
       toast.success("Your event booking is successful!");

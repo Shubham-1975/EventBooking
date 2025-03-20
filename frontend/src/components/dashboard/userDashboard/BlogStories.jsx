@@ -21,7 +21,7 @@ const BlogStories = () => {
         <h1 className="text-center text-3xl font-bold text-[#181818] pt-5">
           Stories by DreamAmbition Event Management
         </h1>
-        <p className="text-center max-w-[680px] mx-auto flex justify-center text-[#424242] py-5">
+        <p className="text-center max-w-[680px] mx-auto flex justify-center text-[#424242] py-5 px-3">
           It sounds like you're creating a rich resource hub for event planning
           in Bihar through "Dream Ambition." Do you want to add a blog section
           to your website to feature these insights, or are you planning to

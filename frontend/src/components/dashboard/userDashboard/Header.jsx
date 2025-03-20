@@ -11,7 +11,7 @@ import FeedBackSuggection from "./FeedBackSuggection";
 import Question from "./Question";
 import Maps from "./Maps";
 
-const Header = () => {
+const Header = ({user}) => {
   return (
     <>
       <FrontHome />
@@ -20,7 +20,7 @@ const Header = () => {
       <Section4Booking />
       <BlogStories />
       <Experience />
-      <FeedBackSuggection />
+      <FeedBackSuggection user={user} />
       <Question />
       <Maps />
       {/* <Testimonials /> */}

@@ -7,11 +7,11 @@ import { VscFeedback } from "react-icons/vsc";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const FeedBackSuggection = () => {
+const FeedBackSuggection = ({ user }) => {
   const [credentials, setCredentials] = useState({
-    name: "",
-    email: "",
-    phone: "",
+    name: user?.username || "",
+    email: user?.email || "",
+    phone: user?.phone || "",
     message: "",
   });
 
@@ -21,9 +21,12 @@ const FeedBackSuggection = () => {
   const handleSubmitsug = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${import.meta.env.VITE_SERVER}/suggestions`, {
-        suggestion,
-      });
+      const response = await axios.post(
+        `${import.meta.env.VITE_SERVER}/suggestions`,
+        {
+          suggestion,
+        }
+      );
       setMessage("Thank you for your suggestion!");
       setSuggestion(""); // Clear input after submission
     } catch (error) {
@@ -94,10 +97,12 @@ const FeedBackSuggection = () => {
                     <input
                       type="text"
                       id="name"
+                      value={user ? user.username : credentials.name} // Show username if logged in
                       onChange={handleChange}
                       placeholder="Enter Your Name"
                       className="mt-1 p-2 rounded-md w-full bg-white text-[#272727] outline-none border-[0.5px] border-[#727171]"
                       required
+                      disabled={!!user} // Disable input when user is logged in
                     />
                   </label>
 
@@ -105,11 +110,13 @@ const FeedBackSuggection = () => {
                     Email
                     <input
                       type="email"
+                      value={user ? user.email : credentials.email}
                       id="email"
                       onChange={handleChange}
                       placeholder="Enter Your Email"
                       className="mt-1 p-2 rounded-md w-full bg-white text-[#272727] outline-none border-[0.5px] border-[#727171]"
                       required
+                      disabled={!!user}
                     />
                   </label>
 
@@ -118,6 +125,7 @@ const FeedBackSuggection = () => {
                     <input
                       type="number"
                       id="phone"
+                      value={user ? user.phone : credentials.phone}
                       onChange={handleChange}
                       placeholder="Enter Your Mobile No"
                       className="mt-1 p-2 rounded-md w-full bg-white text-[#272727] outline-none border-[0.5px] border-[#727171]"
@@ -183,7 +191,6 @@ const FeedBackSuggection = () => {
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );

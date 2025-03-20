@@ -44,7 +44,7 @@ const Experience = () => {
   return (
     <div
       id="experience-section"
-      className="w-full lg:h-[40vh] md:h-[60vh] bg-[#7a2399] sm:h-[55vh] h-[30vh] xl:h-[50vh]"
+      className="w-full lg:h-[25vh] md:h-[50vh] bg-[#7a2399] h-[20vh] xl:h-[50vh] rounded-xl"
       data-aos="fade-up"
     >
       <div className="max-w-[980px] mx-auto flex text-white justify-around pt-[10%] items-center">

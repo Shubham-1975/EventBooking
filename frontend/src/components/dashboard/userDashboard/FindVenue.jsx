@@ -66,6 +66,12 @@ const FindVenue = ({ user }) => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
+  
+
+  const handleVenueClick = (id) => {
+    navigate(`/find/${id}`);  // Correct way to pass the ID dynamically
+  };
+
   return (
     <>
       <Navbar user={user} />
@@ -115,7 +121,7 @@ const FindVenue = ({ user }) => {
       </div>
       {/* Filter Section */}
       <div className="w-full bg-white pt-10 pb-10">
-        <div className="bg-gradient-to-r from-[#71227e] via-[#9536a8] to-[#d185e0] mt-10 max-w-[1100px] mx-auto flex justify-around p-3 rounded-[40px]">
+        <div className="bg-gradient-to-r from-[#71227e] via-[#9536a8] to-[#d185e0] mt-10 lg:max-w-[1150px] md:max-w-[850px] max-w-[350px] mx-auto grid justify-around p-3 rounded-[40px] lg:grid-cols-4 gap-5 grid-cols-1">
           <h1 className="text-white text-lg font-semibold p-2">
             Filter Venue List
           </h1>
@@ -151,11 +157,12 @@ const FindVenue = ({ user }) => {
         </div>
 
         {/* Venue List */}
-        <div className="max-w-[1150px] mx-auto mt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 ">
+        <div className="max-w-[1150px] mx-auto mt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols gap-5 ">
           {filteredVenues.map((venue,index) => (
             <div
-              className="w-[350px] h-[450px] shadow-xl overflow-hidden rounded-xl hover:scale-105 duration-200 hover:shadow-2xl"
+              className="w-[350px] h-[450px] shadow-xl overflow-hidden rounded-xl hover:scale-105 duration-200 hover:shadow-2xl mx-auto"
               key={venue._id}
+              onClick={()=>handleVenueClick(venue._id)}
             >
               <img
                 src={venue.photos[0]}

@@ -5,6 +5,8 @@ import img from "../../../assets/images/user3.png";
 import axios from "axios";
 import { MdOutlineCameraAlt } from "react-icons/md";
 import { FaSortDown } from "react-icons/fa6";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Navbar = ({ user, authDispatch }) => {
   const [userIcon, setUserIcon] = useState(false);
@@ -30,10 +32,18 @@ const Navbar = ({ user, authDispatch }) => {
   const handleSignOut = async (e) => {
     e.preventDefault();
     try {
-      await axios?.get(`${import.meta.env.VITE_SERVER}/auth/logout`, {
-        withCredentials: true,
+      const res = await axios?.get(
+        `${import.meta.env.VITE_SERVER}/auth/logout`,
+        {
+          withCredentials: true,
+        }
+      );
+      toast.success("You have successfully logged out!", {
+        position: "top-center",
+        autoClose: 3000, // Auto close after 3 seconds
       });
-      navigate("/login");
+      authDispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
+      // navigate("/login");
     } catch (error) {}
   };
 
@@ -76,7 +86,7 @@ const Navbar = ({ user, authDispatch }) => {
         { img: url },
         { withCredentials: true }
       );
-     
+
       // Update the global user state with the new profile image
       // Clear the file input
       authDispatch({ type: "LOGIN_SUCCESS", payload: updatedImage.data });
@@ -121,7 +131,7 @@ const Navbar = ({ user, authDispatch }) => {
 
   return (
     <div className="w-full fixed top-0 z-50 bg-[#0d0b1e]">
-      <div className="flex bg-transparent justify-between items-center h-[80px] px-4 md:px-8 ">
+      <div className="flex bg-transparent justify-between items-center h-[80px] ">
         {/* Logo Section */}
         <div className="flex items-center w-[20%]">
           <img src={logo} alt="Logo" className="h-[160px] object-contain" />
@@ -334,15 +344,19 @@ const Navbar = ({ user, authDispatch }) => {
             </li>
             <li className="relative group hover:scale-110 hover:duration-300">
               <NavLink
-                to="/book-event"
+                to="/yourbooking"
                 style={navLinkStyles}
                 className="hover:text-yellow-500"
               >
-                BookEvent
+                Your Booking
               </NavLink>
             </li>
             <li className="relative group hover:scale-110 hover:duration-300">
-              <NavLink to="/contact-us" style={navLinkStyles} className="hover:text-yellow-500">
+              <NavLink
+                to="/contact-us"
+                style={navLinkStyles}
+                className="hover:text-yellow-500"
+              >
                 Contact
               </NavLink>
               {/* <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-yellow-500 transition-all duration-300 group-hover:w-full"></span> */}
@@ -358,24 +372,37 @@ const Navbar = ({ user, authDispatch }) => {
               {userIcon ? (
                 <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-lg py-2 text-black">
                   <ul className="flex flex-col">
-                    <li
-                      className="px-4 py-2 hover:bg-yellow-100 cursor-pointer"
-                      onClick={() => setShowProfile(!showProfile)}
-                    >
-                      Profile
-                    </li>
-                    <li
-                      className="px-4 py-2 hover:bg-yellow-100 cursor-pointer"
-                      onClick={handleLogin}
-                    >
-                      Sign In
-                    </li>
-                    <li
-                      className="px-4 py-2 hover:bg-yellow-100 cursor-pointer"
-                      onClick={handleSignOut}
-                    >
-                      Sign Out
-                    </li>
+                    {user ? (
+                      <li
+                        className="px-4 py-2 hover:bg-yellow-100 cursor-pointer"
+                        onClick={() => setShowProfile(!showProfile)}
+                      >
+                        Profile
+                      </li>
+                    ) : (
+                      ""
+                    )}
+
+                    {user ? (
+                      ""
+                    ) : (
+                      <li
+                        className="px-4 py-2 hover:bg-yellow-100 cursor-pointer"
+                        onClick={handleLogin}
+                      >
+                        Sign In
+                      </li>
+                    )}
+                    {user ? (
+                      <li
+                        className="px-4 py-2 hover:bg-yellow-100 cursor-pointer"
+                        onClick={handleSignOut}
+                      >
+                        Sign Out
+                      </li>
+                    ) : (
+                      ""
+                    )}
                   </ul>
                 </div>
               ) : (
@@ -635,7 +662,9 @@ const Navbar = ({ user, authDispatch }) => {
                   </NavLink>
                 </li>
                 <li className="py-2 hover:text-yellow-500">
-                  <NavLink to="/contact-us" style={navLinkStyles}>Contact</NavLink>
+                  <NavLink to="/contact-us" style={navLinkStyles}>
+                    Contact
+                  </NavLink>
                 </li>
               </ul>
             )}

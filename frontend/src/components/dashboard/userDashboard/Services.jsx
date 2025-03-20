@@ -39,7 +39,7 @@ const Services = () => {
         <h1 className="text-center text-4xl font-semibold pt-5">
           Services by DreamAmbition® Event Management
         </h1>
-        <p className="pt-5 text-[16px] leading-6 text-[#3e3d3d]">
+        <p className="pt-5 px-3 text-[16px] leading-6 text-[#3e3d3d]">
           DreamAmbition® Event Management is an ISO XXXX:2025 certified company
           based in Bihar, East India. We specialize in delivering top-notch
           event management services, including personal event planning,

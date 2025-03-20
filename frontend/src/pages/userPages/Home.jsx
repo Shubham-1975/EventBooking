@@ -7,7 +7,7 @@ const Home = ({user,authLoading,authDispatch}) => {
   return (
     <div>
       <Navbar user={user} authLoading={authLoading} authDispatch={authDispatch}/>
-      <Header />
+      <Header user={user} />
       <div id="contact">
         <Footer />
       </div>
