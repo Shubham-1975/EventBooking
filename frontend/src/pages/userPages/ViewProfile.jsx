@@ -4,10 +4,10 @@ import { FaUserCircle } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { FaXmark } from "react-icons/fa6";
 import useFetch from "../../hooks/useFetch";
 
 const ViewProfile = ({ setShowForm, userID, authDispatch }) => {
-  let location = useLocation().pathname;
   const { data } = useFetch(`${import.meta.env.VITE_SERVER}/users/${userID}`);
   const [user, setUser] = useState(null);
   const [editableUser, setEditableUser] = useState(null);
@@ -97,6 +97,12 @@ const ViewProfile = ({ setShowForm, userID, authDispatch }) => {
 
       <div className="relative w-full max-w-md bg-white rounded-lg shadow-lg p-6">
         {/* Header */}
+        <button
+          className="text-black absolute top-4 right-6 text-2xl hover:text-3xl duration-300 "
+          onClick={() => setShowForm(false)}
+        >
+          <FaXmark />
+        </button>
         <div className="flex flex-col items-center relative">
           {tempImg ? (
             <img

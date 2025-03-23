@@ -3,7 +3,6 @@ import logo from "../../../assets/images/event5.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import img from "../../../assets/images/user3.png";
 import axios from "axios";
-import { MdOutlineCameraAlt } from "react-icons/md";
 import { FaSortDown } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -13,14 +12,11 @@ const Navbar = ({ user, authDispatch }) => {
   const [userIcon, setUserIcon] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // const [showProfile, setShowProfile] = useState(false);
-  const [isUploading, setIsUploading] = useState(false);
   const [isGallery, setIsGallery] = useState(false);
   const [isServices, setIsServices] = useState(false);
-  const [file, setFile] = useState(null);
   const navigate = useNavigate();
   const navLinkStyles = ({ isActive }) => ({
-    color: isActive ? "yellow" : "white",
+    color: isActive ? "#af43ca" : "white",
   });
   const handleUserIcon = () => {
     setUserIcon(!userIcon);
@@ -44,61 +40,8 @@ const Navbar = ({ user, authDispatch }) => {
         autoClose: 3000, // Auto close after 3 seconds
       });
       authDispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
-      // navigate("/login");
     } catch (error) {}
   };
-
-  // const handleFileChange = (e) => {
-  //   setFile(e.target.files[0]);
-  // };
-
-  console.log(user);
-
-  // const handleProfileChange = async (e) => {
-  //   e.preventDefault();
-  //   const files = e.target.files[0];
-  //   if (files) {
-  //     setFile(files);
-  //   }
-
-  //   if (!files || isUploading) return; // Prevent API call if no file or already uploading
-
-  //   setIsUploading(true); // Set uploading state to true
-  //   const data = new FormData();
-  //   data.append("file", files);
-  //   data.append("upload_preset", "upload");
-
-  //   try {
-  //     // Upload image to Cloudinary
-  //     const uploadRes = await axios.post(
-  //       "https://api.cloudinary.com/v1_1/domrjywcg/image/upload",
-  //       data,
-  //       {
-  //         headers: {
-  //           "Content-Type": "multipart/form-data",
-  //         },
-  //       }
-  //     );
-
-  //     const { url } = uploadRes.data; // Get the image URL from the response
-
-  //     // Update the user's profile with the new image
-  //     const updatedImage = await axios.put(
-  //       `${import.meta.env.VITE_SERVER}/users/${user?._id}`,
-  //       { img: url },
-  //       { withCredentials: true }
-  //     );
-
-  //     // Update the global user state with the new profile image
-  //     // Clear the file input
-  //     authDispatch({ type: "LOGIN_SUCCESS", payload: updatedImage.data });
-  //   } catch (error) {
-  //     console.error("Profile update failed:", error);
-  //   } finally {
-  //     setFile(null);
-  //     setIsUploading(false); // Ensure uploading state is reset
-  //   }
-  // };
 
   const [activeMenu, setActiveMenu] = useState(""); // Track active submenu item
 
@@ -144,16 +87,15 @@ const Navbar = ({ user, authDispatch }) => {
 
         {/* Navbar Links */}
         <div className="flex items-center w-[70%] justify-center ">
-          <ul className="hidden md:flex justify-between items-center gap-10 text-white text-[15px] relative">
+          <ul className="hidden md:flex justify-between items-center lg:gap-10 gap-6 text-white text-[15px] relative">
             <li className="relative group hover:scale-110 hover:duration-300">
               <NavLink
                 to="/"
                 style={navLinkStyles}
-                className="hover:text-yellow-500"
+                className="hover:text-[#af43ca]"
               >
                 Home
               </NavLink>
-              {/* <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-yellow-500 transition-all duration-300 group-hover:w-full"></span> */}
             </li>
 
             <li
@@ -187,7 +129,7 @@ const Navbar = ({ user, authDispatch }) => {
           ${
             activeMenu === "planner"
               ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
-              : "hover:bg-gray-800 hover:text-yellow-400"
+              : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                     onMouseEnter={() => handleActiveMenu("planner")}
                     onMouseLeave={() => handleActiveMenu("")}
@@ -201,7 +143,7 @@ const Navbar = ({ user, authDispatch }) => {
           ${
             activeMenu === "wedding"
               ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
-              : "hover:bg-gray-800 hover:text-yellow-400"
+              : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                     onMouseEnter={() => handleActiveMenu("wedding")}
                     onMouseLeave={() => handleActiveMenu("")}
@@ -215,7 +157,7 @@ const Navbar = ({ user, authDispatch }) => {
           ${
             activeMenu === "catering"
               ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
-              : "hover:bg-gray-800 hover:text-yellow-400"
+              : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                     onMouseEnter={() => handleActiveMenu("catering")}
                     onMouseLeave={() => handleActiveMenu("")}
@@ -229,7 +171,7 @@ const Navbar = ({ user, authDispatch }) => {
           ${
             activeMenu === "beach"
               ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
-              : "hover:bg-gray-800 hover:text-yellow-400"
+              : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                     onMouseEnter={() => handleActiveMenu("beach")}
                     onMouseLeave={() => handleActiveMenu("")}
@@ -243,7 +185,7 @@ const Navbar = ({ user, authDispatch }) => {
           ${
             activeMenu === "music"
               ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
-              : "hover:bg-gray-800 hover:text-yellow-400"
+              : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                     onMouseEnter={() => handleActiveMenu("music")}
                     onMouseLeave={() => handleActiveMenu("")}
@@ -257,7 +199,7 @@ const Navbar = ({ user, authDispatch }) => {
           ${
             activeMenu === "Private"
               ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
-              : "hover:bg-gray-800 hover:text-yellow-400"
+              : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                     onMouseEnter={() => handleActiveMenu("Private")}
                     onMouseLeave={() => handleActiveMenu("")}
@@ -284,7 +226,7 @@ const Navbar = ({ user, authDispatch }) => {
           ${
             activeMenu === "photo"
               ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
-              : "hover:bg-gray-800 hover:text-yellow-400"
+              : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                     onMouseEnter={() => handleActiveMenu("photo")}
                     onMouseLeave={() => handleActiveMenu("")}
@@ -298,7 +240,7 @@ const Navbar = ({ user, authDispatch }) => {
           ${
             activeMenu === "video"
               ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
-              : "hover:bg-gray-800 hover:text-yellow-400"
+              : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                     onMouseEnter={() => handleActiveMenu("video")}
                     onMouseLeave={() => handleActiveMenu("")}
@@ -312,7 +254,7 @@ const Navbar = ({ user, authDispatch }) => {
           ${
             activeMenu === "short"
               ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
-              : "hover:bg-gray-800 hover:text-yellow-400"
+              : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                     onMouseEnter={() => handleActiveMenu("short")}
                     onMouseLeave={() => handleActiveMenu("")}
@@ -326,7 +268,7 @@ const Navbar = ({ user, authDispatch }) => {
           ${
             activeMenu === "wedding"
               ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
-              : "hover:bg-gray-800 hover:text-yellow-400"
+              : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                     onMouseEnter={() => handleActiveMenu("wedding")}
                     onMouseLeave={() => handleActiveMenu("")}
@@ -341,7 +283,7 @@ const Navbar = ({ user, authDispatch }) => {
               <NavLink
                 to="/find-venue"
                 style={navLinkStyles}
-                className="hover:text-yellow-500"
+                className="hover:text-[#af43ca]"
               >
                 Find Venue
               </NavLink>
@@ -350,7 +292,7 @@ const Navbar = ({ user, authDispatch }) => {
               <NavLink
                 to="/yourbooking"
                 style={navLinkStyles}
-                className="hover:text-yellow-500"
+                className="hover:text-[#af43ca]"
               >
                 Your Booking
               </NavLink>
@@ -359,7 +301,7 @@ const Navbar = ({ user, authDispatch }) => {
               <NavLink
                 to="/contact-us"
                 style={navLinkStyles}
-                className="hover:text-yellow-500"
+                className="hover:text-[#af43ca]"
               >
                 Contact
               </NavLink>
@@ -368,7 +310,7 @@ const Navbar = ({ user, authDispatch }) => {
               <div className="flex items-center text-[25px] cursor-pointer">
                 <img
                   src={user && user.img ? user.img : img}
-                  className="h-[45px] w-[45px] rounded-[50%]"
+                  className="lg:h-[45px] lg:w-[45px] h-[35px] w-[35px] rounded-[50%]"
                   onClick={handleUserIcon}
                 />
               </div>
@@ -434,7 +376,7 @@ const Navbar = ({ user, authDispatch }) => {
             </div>
 
             {userIcon && (
-              <div className="absolute mt-2 w-48 bg-[#2d2d2d] bg-opacity-90 shadow-lg rounded-lg py-2 text-white z-50 sm:w-56 top-[90%] left-3">
+              <div className="absolute mt-2 bg-[#2d2d2d] bg-opacity-90 shadow-lg rounded-lg py-2 text-white z-50 sm:w-56 top-[90%] left-0 w-full">
                 <ul className="flex flex-col">
                   {user && (
                     <li
@@ -484,13 +426,13 @@ const Navbar = ({ user, authDispatch }) => {
 
             {isMenuOpen && (
               <ul className="absolute top-[80px] right-4 bg-[#2d2d2d] opacity-90  text-white w-full h-auto p-4 px-9 rounded shadow-lg">
-                <li className="py-2 hover:text-yellow-500">
+                <li className="py-2 hover:text-[#af43ca]">
                   <NavLink to="/" style={navLinkStyles}>
                     Home
                   </NavLink>
                 </li>
                 <li
-                  className="py-2 hover:text-yellow-500"
+                  className="py-2 hover:text-[#af43ca]"
                   onClick={() => {
                     setIsServices(!isServices);
                   }}
@@ -506,7 +448,7 @@ const Navbar = ({ user, authDispatch }) => {
           ${
             activeMenu === "Corporate"
               ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
-              : "hover:bg-gray-800 hover:text-yellow-400"
+              : "hover:bg-gray-800 hover:hover:text-[#af43ca]"
           }`}
                         onMouseEnter={() => handleActiveMenu("Corporate")}
                         onMouseLeave={() => handleActiveMenu("")}
@@ -519,7 +461,7 @@ const Navbar = ({ user, authDispatch }) => {
           ${
             activeMenu === "planner"
               ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
-              : "hover:bg-gray-800 hover:text-yellow-400"
+              : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                         onMouseEnter={() => handleActiveMenu("planner")}
                         onMouseLeave={() => handleActiveMenu("")}
@@ -532,7 +474,7 @@ const Navbar = ({ user, authDispatch }) => {
           ${
             activeMenu === "wedding"
               ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
-              : "hover:bg-gray-800 hover:text-yellow-400"
+              : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                         onMouseEnter={() => handleActiveMenu("wedding")}
                         onMouseLeave={() => handleActiveMenu("")}
@@ -545,7 +487,7 @@ const Navbar = ({ user, authDispatch }) => {
           ${
             activeMenu === "catering"
               ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
-              : "hover:bg-gray-800 hover:text-yellow-400"
+              : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                         onMouseEnter={() => handleActiveMenu("catering")}
                         onMouseLeave={() => handleActiveMenu("")}
@@ -558,7 +500,7 @@ const Navbar = ({ user, authDispatch }) => {
           ${
             activeMenu === "beach"
               ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
-              : "hover:bg-gray-800 hover:text-yellow-400"
+              : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                         onMouseEnter={() => handleActiveMenu("beach")}
                         onMouseLeave={() => handleActiveMenu("")}
@@ -571,7 +513,7 @@ const Navbar = ({ user, authDispatch }) => {
           ${
             activeMenu === "music"
               ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
-              : "hover:bg-gray-800 hover:text-yellow-400"
+              : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                         onMouseEnter={() => handleActiveMenu("music")}
                         onMouseLeave={() => handleActiveMenu("")}
@@ -584,7 +526,7 @@ const Navbar = ({ user, authDispatch }) => {
           ${
             activeMenu === "Private"
               ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
-              : "hover:bg-gray-800 hover:text-yellow-400"
+              : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                         onMouseEnter={() => handleActiveMenu("Private")}
                         onMouseLeave={() => handleActiveMenu("")}
@@ -594,7 +536,7 @@ const Navbar = ({ user, authDispatch }) => {
                     </div>
                   )}
                 </li>
-                <li className="py-2 hover:text-yellow-500">
+                <li className="py-2 hover:text-[#af43ca]">
                   <span
                     className="flex gap-2 cursor-pointer text-white"
                     onClick={() => setIsGallery(!isGallery)}
@@ -609,7 +551,7 @@ const Navbar = ({ user, authDispatch }) => {
           ${
             activeMenu === "photo"
               ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
-              : "hover:bg-gray-800 hover:text-yellow-400"
+              : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                         onMouseEnter={() => handleActiveMenu("photo")}
                         onMouseLeave={() => handleActiveMenu("")}
@@ -622,7 +564,7 @@ const Navbar = ({ user, authDispatch }) => {
           ${
             activeMenu === "video"
               ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
-              : "hover:bg-gray-800 hover:text-yellow-400"
+              : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                         onMouseEnter={() => handleActiveMenu("video")}
                         onMouseLeave={() => handleActiveMenu("")}
@@ -635,7 +577,7 @@ const Navbar = ({ user, authDispatch }) => {
           ${
             activeMenu === "short"
               ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
-              : "hover:bg-gray-800 hover:text-yellow-400"
+              : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                         onMouseEnter={() => handleActiveMenu("short")}
                         onMouseLeave={() => handleActiveMenu("")}
@@ -648,7 +590,7 @@ const Navbar = ({ user, authDispatch }) => {
           ${
             activeMenu === "wedding"
               ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
-              : "hover:bg-gray-800 hover:text-yellow-400"
+              : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                         onMouseEnter={() => handleActiveMenu("wedding")}
                         onMouseLeave={() => handleActiveMenu("")}
@@ -658,22 +600,22 @@ const Navbar = ({ user, authDispatch }) => {
                     </div>
                   )}
                 </li>
-                <li className="py-2 hover:text-yellow-500">
+                <li className="py-2 hover:text-[#af43ca]">
                   <NavLink to="/find-venue" style={navLinkStyles}>
                     Find Venue
                   </NavLink>
                 </li>
 
-                <li className="py-2 hover:text-yellow-500">
+                <li className="py-2 hover:text-[#af43ca]">
                   <NavLink
                     to="/yourbooking"
                     style={navLinkStyles}
-                    className="hover:text-yellow-500"
+                    className="hover:text-[#af43ca]"
                   >
                     Your Booking
                   </NavLink>
                 </li>
-                <li className="py-2 hover:text-yellow-500">
+                <li className="py-2 hover:text-[#af43ca]">
                   <NavLink to="/contact-us" style={navLinkStyles}>
                     Contact
                   </NavLink>
