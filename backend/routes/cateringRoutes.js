@@ -1,30 +1,27 @@
 const express = require("express");
 const { verifyAdmin } = require("../Authverify/auth");
-const Event = require("../models/eventSchema");
+const { Catering } = require("../models/servicesSchema"); // ✅ Import Model
 
 const router = express.Router();
 
-// CREATE
+// Create Catering Entry
 router.post("/", verifyAdmin, async (req, res, next) => {
-  const newEvent = new Event(req.body);
   try {
-    const savedEvent = await newEvent.save();
+    const newCatering = new Catering(req.body); // ✅ Use the Model
+    const savedEvent = await newCatering.save();
     res.status(200).json(savedEvent);
   } catch (error) {
     next(error);
   }
 });
 
-// UPDATE
+// Update Catering Entry
 router.put("/:id", verifyAdmin, async (req, res, next) => {
   try {
-    const updatedEvent = await Event.findByIdAndUpdate(
+    const updatedEvent = await Catering.findByIdAndUpdate(
       req.params.id,
       req.body,
-      {
-        new: true,
-        runValidators: true,
-      }
+      { new: true, runValidators: true }
     );
     if (!updatedEvent) {
       return res.status(404).json({ error: "Event not found" });
@@ -35,10 +32,10 @@ router.put("/:id", verifyAdmin, async (req, res, next) => {
   }
 });
 
-// DELETE
+// Delete Catering Entry
 router.delete("/:id", verifyAdmin, async (req, res, next) => {
   try {
-    const deletedEvent = await Event.findByIdAndDelete(req.params.id);
+    const deletedEvent = await Catering.findByIdAndDelete(req.params.id);
     if (!deletedEvent) {
       return res.status(404).json({ error: "Event not found" });
     }
@@ -48,10 +45,10 @@ router.delete("/:id", verifyAdmin, async (req, res, next) => {
   }
 });
 
-// GET
+// Get Catering by ID
 router.get("/:id", async (req, res, next) => {
   try {
-    const event = await Event.findById(req.params.id);
+    const event = await Catering.findById(req.params.id);
     if (!event) {
       return res.status(404).json({ error: "Event not found" });
     }
@@ -61,10 +58,10 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-// GET ALL
+// Get All Catering Entries
 router.get("/", async (req, res, next) => {
   try {
-    const result = await Event.find(req.query); // Use query for filtering
+    const result = await Catering.find(req.query); // ✅ Query for filtering
     res.status(200).json(result);
   } catch (error) {
     next(error);

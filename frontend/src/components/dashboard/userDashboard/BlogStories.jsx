@@ -3,29 +3,26 @@ import { NavLink } from "react-router-dom";
 import { FaAngleDoubleRight } from "react-icons/fa";
 import useFetch from "../../../hooks/useFetch";
 
-const BlogStories = () => {
-  const { data } = useFetch(`${import.meta.env.VITE_SERVER}/blog`);
-  const [list, setList] = useState([]);
-  useEffect(() => {
-    if (data) {
-      setList(data);
-    }
-  }, [data]);
+const BlogStories = ({ list, blog }) => {
+  // const { data } = useFetch(`${import.meta.env.VITE_SERVER}/blog`);
+  // const [list, setList] = useState([]);
+  // useEffect(() => {
+  //   if (data) {
+  //     setList(data);
+  //   }
+  // }, [data]);
 
   return (
     <>
       <div className="max-w-[1100px] mx-auto">
         <h1 className="text-center text-[#7a299a] text-[16px] font-semibold">
-          OUR BLOGS & ARTICLES
+          {blog?.BlogTitle}
         </h1>
         <h1 className="text-center text-3xl font-bold text-[#181818] pt-5">
-          Stories by DreamAmbition Event Management
+          {blog?.BlogHeader}
         </h1>
         <p className="text-center max-w-[680px] mx-auto flex justify-center text-[#424242] py-5 px-3">
-          It sounds like you're creating a rich resource hub for event planning
-          in Bihar through "Dream Ambition." Do you want to add a blog section
-          to your website to feature these insights, or are you planning to
-          integrate existing blogs from another source?
+          {blog?.BlogDescription}
         </p>
         <div className="pt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:pl-24 pl-14 lg:pl-10 gap-5 relative">
           {list?.map((value, index) => (
@@ -48,7 +45,8 @@ const BlogStories = () => {
                 className="!pt-10 text-[13px] leading-6 text-[#b14eca] hover:text-[#3e3d3d] text-start px-4 flex items-center gap-2 absolute"
                 onClick={() => handleOnClick(index)}
               >
-                Learn More <FaAngleDoubleRight />
+                {blog?.navigation ? blog?.navigation : ""}
+                {blog?.icon ? blog?.icon : ""}
               </button>
             </div>
           ))}

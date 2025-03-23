@@ -7,11 +7,13 @@ import { MdOutlineCameraAlt } from "react-icons/md";
 import { FaSortDown } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ViewProfile from "../../../pages/userPages/ViewProfile";
 
 const Navbar = ({ user, authDispatch }) => {
   const [userIcon, setUserIcon] = useState(false);
+  const [showForm, setShowForm] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showProfile, setShowProfile] = useState(false);
+  // const [showProfile, setShowProfile] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [isGallery, setIsGallery] = useState(false);
   const [isServices, setIsServices] = useState(false);
@@ -25,7 +27,6 @@ const Navbar = ({ user, authDispatch }) => {
     // setShowProfile(!showProfile);
   };
 
-  const handleProfile = () => {};
   const handleLogin = () => {
     navigate("/login");
   };
@@ -51,52 +52,53 @@ const Navbar = ({ user, authDispatch }) => {
   //   setFile(e.target.files[0]);
   // };
 
-  const handleProfileChange = async (e) => {
-    e.preventDefault();
-    const files = e.target.files[0];
-    console.log(e.target.files);
-    if (files) {
-      setFile(files);
-    }
+  console.log(user);
 
-    if (!files || isUploading) return; // Prevent API call if no file or already uploading
+  // const handleProfileChange = async (e) => {
+  //   e.preventDefault();
+  //   const files = e.target.files[0];
+  //   if (files) {
+  //     setFile(files);
+  //   }
 
-    setIsUploading(true); // Set uploading state to true
-    const data = new FormData();
-    data.append("file", files);
-    data.append("upload_preset", "upload");
+  //   if (!files || isUploading) return; // Prevent API call if no file or already uploading
 
-    try {
-      // Upload image to Cloudinary
-      const uploadRes = await axios.post(
-        "https://api.cloudinary.com/v1_1/domrjywcg/image/upload",
-        data,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+  //   setIsUploading(true); // Set uploading state to true
+  //   const data = new FormData();
+  //   data.append("file", files);
+  //   data.append("upload_preset", "upload");
 
-      const { url } = uploadRes.data; // Get the image URL from the response
+  //   try {
+  //     // Upload image to Cloudinary
+  //     const uploadRes = await axios.post(
+  //       "https://api.cloudinary.com/v1_1/domrjywcg/image/upload",
+  //       data,
+  //       {
+  //         headers: {
+  //           "Content-Type": "multipart/form-data",
+  //         },
+  //       }
+  //     );
 
-      // Update the user's profile with the new image
-      const updatedImage = await axios.put(
-        `${import.meta.env.VITE_SERVER}/users/${user?._id}`,
-        { img: url },
-        { withCredentials: true }
-      );
+  //     const { url } = uploadRes.data; // Get the image URL from the response
 
-      // Update the global user state with the new profile image
-      // Clear the file input
-      authDispatch({ type: "LOGIN_SUCCESS", payload: updatedImage.data });
-    } catch (error) {
-      console.error("Profile update failed:", error);
-    } finally {
-      setFile(null);
-      setIsUploading(false); // Ensure uploading state is reset
-    }
-  };
+  //     // Update the user's profile with the new image
+  //     const updatedImage = await axios.put(
+  //       `${import.meta.env.VITE_SERVER}/users/${user?._id}`,
+  //       { img: url },
+  //       { withCredentials: true }
+  //     );
+
+  //     // Update the global user state with the new profile image
+  //     // Clear the file input
+  //     authDispatch({ type: "LOGIN_SUCCESS", payload: updatedImage.data });
+  //   } catch (error) {
+  //     console.error("Profile update failed:", error);
+  //   } finally {
+  //     setFile(null);
+  //     setIsUploading(false); // Ensure uploading state is reset
+  //   }
+  // };
 
   const [activeMenu, setActiveMenu] = useState(""); // Track active submenu item
 
@@ -133,7 +135,10 @@ const Navbar = ({ user, authDispatch }) => {
     <div className="w-full fixed top-0 z-50 bg-[#0d0b1e]">
       <div className="flex bg-transparent justify-between items-center h-[80px] ">
         {/* Logo Section */}
-        <div className="flex items-center w-[20%]">
+        <div
+          className="flex items-center w-[20%]"
+          onClick={() => navigate("/")}
+        >
           <img src={logo} alt="Logo" className="h-[160px] object-contain" />
         </div>
 
@@ -340,7 +345,6 @@ const Navbar = ({ user, authDispatch }) => {
               >
                 Find Venue
               </NavLink>
-              {/* <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-yellow-500 transition-all duration-300 group-hover:w-full"></span> */}
             </li>
             <li className="relative group hover:scale-110 hover:duration-300">
               <NavLink
@@ -359,7 +363,6 @@ const Navbar = ({ user, authDispatch }) => {
               >
                 Contact
               </NavLink>
-              {/* <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-yellow-500 transition-all duration-300 group-hover:w-full"></span> */}
             </li>
             <li className="relative">
               <div className="flex items-center text-[25px] cursor-pointer">
@@ -375,7 +378,7 @@ const Navbar = ({ user, authDispatch }) => {
                     {user ? (
                       <li
                         className="px-4 py-2 hover:bg-yellow-100 cursor-pointer"
-                        onClick={() => setShowProfile(!showProfile)}
+                        onClick={() => setShowForm(true)}
                       >
                         Profile
                       </li>
@@ -409,71 +412,76 @@ const Navbar = ({ user, authDispatch }) => {
                 " "
               )}
             </li>
-            {showProfile && (
-              <>
-                <div
-                  className="absolute bg-white h-[400px] w-[300px] text-black top-[48px]  right-0 rounded-[12px] overflow-hidden"
-                  onClick={() => setShowProfile(false)}
-                >
-                  <div className="relative">
-                    <div className="w-full h-[80px] bg-[#ae48d3]">
-                      <h1 className="text-center pt-3 font-semibold text-[20px] capitalize">
-                        {user?.username?.split(" ")[0]}
-                      </h1>
-                    </div>
-                    <div className=" flex justify-center items-center pt-5 absolute left-[32%] top-[30%]">
-                      <div className="relative">
-                        <img
-                          src={file ? URL?.createObjectURL(file) : user.img}
-                          alt=""
-                          className="w-[100px] h-[100px] object-fill rounded-[50%]"
-                        />
-
-                        <label htmlFor="fileInput">
-                          <div className="absolute text-2xl h-[35px] w-[35px] flex justify-center items-center text-white bg-yellow-500 rounded-[50%] bottom-0 right-0 hover:bg-yellow-600 cursor-pointer">
-                            <div className="flex items-center gap-2">
-                              {isUploading ? (
-                                <div className="w-6 h-6 border-2 border-white border-t-yellow-400 rounded-full animate-spin"></div>
-                              ) : (
-                                <MdOutlineCameraAlt />
-                              )}
-                            </div>
-                          </div>
-                        </label>
-                        <input
-                          type="file"
-                          id="fileInput"
-                          accept="image/*"
-                          className="hidden"
-                          name="fileInput"
-                          onChange={(e) => handleProfileChange(e)}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="relative top-[20%]">
-                    <h1 className="text-center font-semibold text-[18px] capitalize">
-                      {user?.username}
-                    </h1>
-                    <p className="text-center">{user?.email}</p>
-                    <p className="text-center">
-                      {user?.phone}
-                      <p>{user?.city}</p>
-                    </p>
-                  </div>
-                </div>
-              </>
-            )}
           </ul>
-
+          {showForm && (
+            <ViewProfile
+              setShowForm={setShowForm}
+              userID={user?._id}
+              authDispatch={authDispatch}
+            />
+          )}
           {/* Mobile Menu */}
           <div className="md:hidden flex items-center">
+            <div className="relative flex items-center text-[25px] cursor-pointer">
+              <img
+                src={user?.img || img}
+                className="h-[45px] w-[45px] rounded-full"
+                onClick={() => {
+                  setUserIcon(!userIcon);
+                  setIsMenuOpen(false); // Close menu when opening user profile
+                }}
+              />
+            </div>
+
+            {userIcon && (
+              <div className="absolute mt-2 w-48 bg-[#2d2d2d] bg-opacity-90 shadow-lg rounded-lg py-2 text-white z-50 sm:w-56 top-[90%] left-3">
+                <ul className="flex flex-col">
+                  {user && (
+                    <li
+                      className="px-4 py-2 hover:bg-[#484848] cursor-pointer"
+                      onClick={() => setShowForm(true)}
+                    >
+                      Profile
+                    </li>
+                  )}
+                  {!user && (
+                    <li
+                      className="px-4 py-2 hover:bg-[#484848]  cursor-pointer"
+                      onClick={handleLogin}
+                    >
+                      Sign In
+                    </li>
+                  )}
+                  {user && (
+                    <li
+                      className="px-4 py-2 hover:bg-[#484848]  cursor-pointer"
+                      onClick={handleSignOut}
+                    >
+                      Sign Out
+                    </li>
+                  )}
+                </ul>
+              </div>
+            )}
+
+            {showForm && (
+              <ViewProfile
+                setShowForm={setShowForm}
+                userID={user?._id}
+                authDispatch={authDispatch}
+              />
+            )}
+
             <button
               className="text-[#32c9d3] text-2xl absolute right-14"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={() => {
+                setIsMenuOpen(!isMenuOpen);
+                setUserIcon(false); // Close user profile when opening menu
+              }}
             >
               {isMenuOpen ? "X" : "☰"}
             </button>
+
             {isMenuOpen && (
               <ul className="absolute top-[80px] right-4 bg-[#2d2d2d] opacity-90  text-white w-full h-auto p-4 px-9 rounded shadow-lg">
                 <li className="py-2 hover:text-yellow-500">
@@ -657,8 +665,12 @@ const Navbar = ({ user, authDispatch }) => {
                 </li>
 
                 <li className="py-2 hover:text-yellow-500">
-                  <NavLink to="/bookevent" style={navLinkStyles}>
-                    BookEvent
+                  <NavLink
+                    to="/yourbooking"
+                    style={navLinkStyles}
+                    className="hover:text-yellow-500"
+                  >
+                    Your Booking
                   </NavLink>
                 </li>
                 <li className="py-2 hover:text-yellow-500">

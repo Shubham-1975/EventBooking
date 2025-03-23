@@ -13,7 +13,7 @@ import TalkToExpert from "../../../../pages/userPages/TalkToExpert";
 const WeddingPlanner = ({ user }) => {
   const [showForm, setShowForm] = useState(false);
   const { data, loading, error } = useFetch(
-    `${import.meta.env.VITE_SERVER}/wedding-planner`
+    `${import.meta.env.VITE_SERVER}/planner`
   );
   const [list, setList] = useState(data);
   useEffect(() => {

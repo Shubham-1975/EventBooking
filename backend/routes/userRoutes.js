@@ -65,11 +65,11 @@ router.delete("/:id", verifyUser, async (req, res, next) => {
 //GET
 router.get("/:id", verifyUser, async (req, res, next) => {
   try {
-    const User1 = await User.findById(req.params.id);
-    if (!User1) {
+    const users = await User.findById(req.params.id);
+    if (!users) {
       return res.status(401).json({ error: "data is not found" });
     }
-    res.status(200).json(User1);
+    res.status(200).json(users);
   } catch (error) {
     next(error);
   }

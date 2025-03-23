@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { MdOutlineDriveFolderUpload } from "react-icons/md";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Sidebar from "../../components/dashboard/adminDashboard/Sidebar";
-import NavbarUpper from "../../components/dashboard/adminDashboard/NavbarUpper";
+import Sidebar from "../../../components/dashboard/adminDashboard/Sidebar";
+import NavbarUpper from "../../../components/dashboard/adminDashboard/NavbarUpper";
 import { toast } from "react-toastify";
 
-const AddWeddingPlanner = ({ Inputs }) => {
+const AddPhotoGraphy = ({ Inputs }) => {
   const [files, setFiles] = useState("");
   const [info, setInfo] = useState({});
   const navigate = useNavigate();
@@ -22,28 +22,32 @@ const AddWeddingPlanner = ({ Inputs }) => {
       const list = await Promise.all(
         Object?.values(files)?.map(async (file) => {
           const data = new FormData();
-          data?.append("file", file);
-          data?.append("upload_preset", "upload");
+          data.append("file", file);
+          data.append("upload_preset", "upload");
           const uploadRes = await axios?.post(
             "https://api.cloudinary.com/v1_1/domrjywcg/image/upload",
             data
           );
-
           const { url } = uploadRes.data;
           return url;
         })
       );
-      const newEvent = {
+      const newDestinationWedding = {
         ...info,
         photos: list,
       };
-      await axios?.post(`${import.meta.env.VITE_SERVER}/wedding-planner`, newEvent, {
-        withCredentials: true,
-      });
-      toast.success("New Wedding Add Succesfull!");
+      await axios.post(
+        `${import.meta.env.VITE_SERVER}/photography`,
+        newDestinationWedding,
+        {
+          withCredentials: true,
+        }
+      );
       setLoading(false);
-      navigate("/events");
+      navigate("/services");
+      toast.success("New PhotoGraphy services Successfully Added!");
     } catch (error) {
+      console.log(error);
       toast.error(error.response.data.error.message);
       setLoading(false);
     }
@@ -60,7 +64,7 @@ const AddWeddingPlanner = ({ Inputs }) => {
 
           <div>
             <div className="pl-10">
-              <h1 className="text-[#4e4d4d] text-[30px]">Add New Weddding Services</h1>
+              <h1 className="text-[#4e4d4d] text-[30px]">Add New Destination Wedding</h1>
             </div>
             <hr />
             <div className="p-10 flex">
@@ -98,8 +102,8 @@ const AddWeddingPlanner = ({ Inputs }) => {
                     />
                   </div>
                   <div className="flex flex-wrap gap-10 justify-center items-center">
-                    {Inputs?.map((input) => (
-                      <div className="formInput p-2" key={input.id}>
+                    {Inputs.map((input) => (
+                      <div className="formInput p-2" key={input?.id}>
                         <label className="flex items-center gap-[10px]">
                           {input?.label}
                         </label>
@@ -130,4 +134,4 @@ const AddWeddingPlanner = ({ Inputs }) => {
   );
 };
 
-export default AddWeddingPlanner;
+export default AddPhotoGraphy;

@@ -144,3 +144,13 @@ export const BlogInput = [
   },
 
 ];
+
+export const BeachInput = [
+  {
+    id: "title",
+    label: "Title",
+    type: "text",
+    placeholder: "Enter Title",
+  },
+
+];

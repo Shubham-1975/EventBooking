@@ -58,6 +58,10 @@ const Sidebar = () => {
               <MdLocalShipping className="icon" />
               <span>Event</span>
             </NavLink>
+            <NavLink to="/services" className="sidebar-item">
+              <MdLocalShipping className="icon" />
+              <span>Services</span>
+            </NavLink>
             <NavLink to="/feedback" className="sidebar-item">
               <CiCreditCard1 className="icon" />
               <span>Feedback</span>

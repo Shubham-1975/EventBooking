@@ -17,7 +17,6 @@ const VenueIdShow = () => {
   const navigate = useNavigate();
 
   const handleGetEstimate = () =>{
-    console.log("shubham");
     navigate(`/book-event/${venue._id}`, { state: { venue } });
   }
 

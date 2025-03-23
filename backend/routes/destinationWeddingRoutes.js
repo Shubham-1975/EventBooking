@@ -1,24 +1,25 @@
 const express = require("express");
 const { verifyAdmin } = require("../Authverify/auth");
-const Event = require("../models/eventSchema");
+const { DestinationWedding } = require("../models/servicesSchema");
 
 const router = express.Router();
 
-// CREATE
+//create weddingPlanner
+
 router.post("/", verifyAdmin, async (req, res, next) => {
-  const newEvent = new Event(req.body);
+  const newDestinationWedding = new DestinationWedding(req.body);
   try {
-    const savedEvent = await newEvent.save();
+    const savedEvent = await newDestinationWedding.save();
     res.status(200).json(savedEvent);
   } catch (error) {
     next(error);
   }
 });
 
-// UPDATE
+//update wedding planner
 router.put("/:id", verifyAdmin, async (req, res, next) => {
   try {
-    const updatedEvent = await Event.findByIdAndUpdate(
+    const updatedEvent = await DestinationWedding.findByIdAndUpdate(
       req.params.id,
       req.body,
       {
@@ -35,10 +36,12 @@ router.put("/:id", verifyAdmin, async (req, res, next) => {
   }
 });
 
-// DELETE
+//delete wedding planner
 router.delete("/:id", verifyAdmin, async (req, res, next) => {
   try {
-    const deletedEvent = await Event.findByIdAndDelete(req.params.id);
+    const deletedEvent = await DestinationWedding.findByIdAndDelete(
+      req.params.id
+    );
     if (!deletedEvent) {
       return res.status(404).json({ error: "Event not found" });
     }
@@ -48,10 +51,11 @@ router.delete("/:id", verifyAdmin, async (req, res, next) => {
   }
 });
 
-// GET
+//get By ID
+
 router.get("/:id", async (req, res, next) => {
   try {
-    const event = await Event.findById(req.params.id);
+    const event = await DestinationWedding.findById(req.params.id);
     if (!event) {
       return res.status(404).json({ error: "Event not found" });
     }
@@ -61,10 +65,11 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-// GET ALL
+//get all
+
 router.get("/", async (req, res, next) => {
   try {
-    const result = await Event.find(req.query); // Use query for filtering
+    const result = await DestinationWedding.find(req.query); // Use query for filtering
     res.status(200).json(result);
   } catch (error) {
     next(error);

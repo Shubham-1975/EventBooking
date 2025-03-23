@@ -18,6 +18,9 @@ import PrivateParty from "../dashboard/userDashboard/ServicesSection/PrivatePart
 import FindVenue from "../dashboard/userDashboard/FindVenue";
 import YourBooking from "../dashboard/userDashboard/YourBooking";
 import VenueIdShow from "../../pages/userPages/VenueIdShow";
+import WeddingPhotoGraphy from "../dashboard/userDashboard/ServicesSection/WeddingPhotoGraphy";
+import Catering from "../dashboard/userDashboard/ServicesSection/Catering";
+import ViewProfile from "../../pages/userPages/ViewProfile";
 
 const ProtectedRoute = ({ user, children }) => {
   if (!user) {
@@ -75,6 +78,14 @@ const UserSection = () => {
                     path="/corporate-event"
                     element={<CorporateEvent user={user} />}
                   />
+                   <Route
+                    path="/wedding-photography"
+                    element={<WeddingPhotoGraphy user={user} />}
+                  />
+                   <Route
+                    path="/catering"
+                    element={<Catering user={user} />}
+                  />
                   <Route
                     path="/wedding-planner"
                     element={<WeddingPlanner user={user} />}
@@ -115,6 +126,14 @@ const UserSection = () => {
                     element={
                       <ProtectedRoute user={user}>
                         <VenueIdShow user={user} />
+                      </ProtectedRoute>
+                    }
+                  />
+                   <Route
+                    path="users/:id"
+                    element={
+                      <ProtectedRoute user={user}>
+                        <ViewProfile user={user} />
                       </ProtectedRoute>
                     }
                   />

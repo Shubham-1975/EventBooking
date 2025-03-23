@@ -1,9 +1,8 @@
 const express = require("express");
 const { verifyAdmin } = require("../Authverify/auth");
-const WeddingPlanner = require("../models/weddingPlanner");
+const { WeddingPlanner } = require("../models/servicesSchema");
 
 const router = express.Router();
-
 
 //create weddingPlanner
 
@@ -16,7 +15,6 @@ router.post("/", verifyAdmin, async (req, res, next) => {
     next(error);
   }
 });
-
 
 //update wedding planner
 router.put("/:id", verifyAdmin, async (req, res, next) => {
@@ -53,7 +51,7 @@ router.delete("/:id", verifyAdmin, async (req, res, next) => {
 
 //get By ID
 
-router.get("/find/:id", async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
     const event = await WeddingPlanner.findById(req.params.id);
     if (!event) {
