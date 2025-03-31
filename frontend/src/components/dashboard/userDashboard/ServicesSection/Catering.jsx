@@ -6,53 +6,29 @@ import corporateImg from "../../../../assets/images/caterin3.jpg";
 import { FaWhatsapp } from "react-icons/fa";
 import { MdOutlineWifiCalling3 } from "react-icons/md";
 import { FaVideo } from "react-icons/fa";
-import AOS from "aos";
-import { IoMdPhotos } from "react-icons/io";
+import { cateringfaqs,cateringfaqs2 } from "../AnswerQuestionData";
 
 import "aos/dist/aos.css";
 import { NavLink } from "react-router-dom";
 import TalkToExpert from "../../../../pages/userPages/TalkToExpert";
 import BlogStories from "../BlogStories";
+import useFetch from "../../../../hooks/useFetch";
+import AnswerQuestion from "../AnswerQuestion";
 
 const Catering = ({ user }) => {
   const [showForm, setShowForm] = useState(false);
-  const [experience, setExperience] = useState(0);
-  const [events, setEvents] = useState(0);
-  const [clients, setClients] = useState(0);
-  const [isAnimated, setIsAnimated] = useState(false); // To track animation start
 
+  const { data } = useFetch(`${import.meta.env.VITE_SERVER}/catering`);
+
+  const [list, setList] = useState([]);
   useEffect(() => {
-    AOS.init({ duration: 1500, once: true }); // Initialize AOS with 'once' so it runs once
+    if (data) {
+      setList(data);
+    }
+  }, [data]);
 
-    const startCounting = (setter, finalValue) => {
-      let start = 0;
-      const increment = finalValue / 50; // Controls speed
-      const interval = setInterval(() => {
-        start += increment;
-        if (start >= finalValue) {
-          start = finalValue;
-          clearInterval(interval);
-        }
-        setter(Math.floor(start));
-      }, 50);
-    };
-
-    const handleAOS = () => {
-      const section = document.getElementById("experience-section");
-      if (section && !isAnimated) {
-        const rect = section.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom >= 0) {
-          startCounting(setExperience, 123);
-          startCounting(setEvents, 653);
-          startCounting(setClients, 4.6);
-          setIsAnimated(true); // Prevent re-animation
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleAOS);
-    return () => window.removeEventListener("scroll", handleAOS);
-  }, [isAnimated]);
+  const blog = { BlogHeader: "Our Wedding Photography Services" };
+   
   return (
     <>
       <Navbar user={user} />
@@ -153,7 +129,8 @@ const Catering = ({ user }) => {
             </div>
           </div>
         </div>
-        <div className="flex justify-center mt-10">
+        <BlogStories list={list} blog={blog} />
+        {/* <div className="flex justify-center mt-10">
           <NavLink
             to="/ourportfolio"
             className="flex items-center text-center gap-2 bg-gradient-to-r from-[#a914c7] via-[#ac2bc6] to-[#af5fbe] px-4 py-2 rounded-full text-white text-sm md:text-lg font-normal hover:from-[#af5fbe] hover:via-[#ac2bc6] hover:to-[#a914c7] transition-all duration-500"
@@ -162,26 +139,31 @@ const Catering = ({ user }) => {
             <IoMdPhotos />
             Explore Our Stunning Photography{" "}
           </NavLink>
-        </div>
+        </div> */}
         <div className="my-10 py-10 px-5 w-full bg-[#f5fac9]">
           <h1 className="text-sm md:text-xl text-center font-semibold pb-5 text-[#943ab5]">
             Delightful Menu Options for Memorable Events
           </h1>
-          <p className="text-center text-[#2b2a2a]  font-semibold">Experience the Essence of Flavor with Our Exquisite Catering Services</p>
+          <p className="text-center text-[#2b2a2a]  font-semibold pb-10">
+            Experience the Essence of Flavor with Our Exquisite Catering
+            Services
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div className="w-full h-auto">
-              <iframe
-                className="w-full h-[200px] sm:h-[300px] md:h-[350px] rounded-xl"
-                src="https://www.youtube.com/embed/8UojuERYMJ4"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+            <div className="w-full h-auto text-[#343434] text-xl">
+              Dream Ambition is a premier event planning and catering service
+              provider, dedicated to delivering seamless and memorable
+              experiences. Our extensive network ensures the timely delivery of
+              fresh, high-quality food, making every occasion special. We offer
+              comprehensive event solutions, including customized catering
+              services tailored to diverse tastes and preferences. With a deep
+              understanding of our clients' unique requirements, Dream Ambition
+              creates personalized menus that showcase rich flavors and
+              authentic culinary excellence.
             </div>
             <div className="w-full h-auto">
               <iframe
                 className="w-full h-[200px] sm:h-[300px] md:h-[350px] rounded-xl"
-                src="https://www.youtube.com/embed/6BCA0uEfUw4"
+                src="https://www.youtube.com/embed/QuuELnLDzgk"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -199,42 +181,16 @@ const Catering = ({ user }) => {
             </NavLink>
           </div>
         </div>
-
-        <div className="h-[250px] relative my-10">
-          <img src={homeimg} alt="" className="w-full h-full object-cover" />
-          <div
-            id="experience-section"
-            className="absolute top-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-around px-5"
-            data-aos="fade-up"
-          >
-            <div className="text-white text-center">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">
-                {experience}+
-              </h1>
-              <h3 className="text-xs sm:text-sm md:text-lg">
-                Weddings Covered
-              </h3>
-            </div>
-            <div className="text-white text-center">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">
-                {events}+
-              </h1>
-              <h3 className="text-xs sm:text-sm md:text-lg">Happy Customers</h3>
-            </div>
-            <div className="text-white text-center">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">
-                {clients}
-              </h1>
-              <h3 className="text-xs sm:text-sm md:text-lg">Customer Rating</h3>
-            </div>
-          </div>
-        </div>
-        <BlogStories />
+        <h1 className="text-[#af43ca] text-center text-lg font-semibold pt-11">
+        Do you have any other questions?
+      </h1>
+      <h1 className="text-[#232323] text-3xl text-center py-5 font-bold">
+        Please check these FAQs.
+      </h1>
+        <AnswerQuestion faqs={cateringfaqs} faqs2={cateringfaqs2} />
       </div>
-
       <Footer />
     </>
   );
 };
-
 export default Catering;

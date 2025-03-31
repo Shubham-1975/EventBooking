@@ -38,6 +38,12 @@ import ViewDestination from "../../pages/adminPages/View/ViewDestination";
 import ViewBeach from "../../pages/adminPages/View/ViewBeach";
 import AddPhotoGraphy from "../../pages/adminPages/services/AddPhotoGraphy";
 import ViewPhotography from "../../pages/adminPages/View/ViewPhotography";
+import VideoLink from "../../pages/adminPages/video/VideoLink";
+import AddVideo from "../../pages/adminPages/video/AddVideo";
+import AddShortVideo from "../../pages/adminPages/video/AddShortVideo";
+import ViewVideo from "../../pages/adminPages/video/ViewVideo";
+import ViewShortVideo from "../../pages/adminPages/video/ViewShortVideo";
+
 
 const AdminSection = () => {
   const ProtectRoute = ({ children, user }) => {
@@ -159,7 +165,7 @@ const AdminSection = () => {
                       </ProtectRoute>
                     }
                   />
-                   <Route
+                  <Route
                     path="services/add-new-photography"
                     element={
                       <ProtectRoute user={user}>
@@ -243,7 +249,7 @@ const AdminSection = () => {
                       </ProtectRoute>
                     }
                   />
-                   <Route
+                  <Route
                     path="catering/:id"
                     element={
                       <ProtectRoute user={user}>
@@ -251,7 +257,7 @@ const AdminSection = () => {
                       </ProtectRoute>
                     }
                   />
-                   <Route
+                  <Route
                     path="destination/:id"
                     element={
                       <ProtectRoute user={user}>
@@ -259,7 +265,7 @@ const AdminSection = () => {
                       </ProtectRoute>
                     }
                   />
-                   <Route
+                  <Route
                     path="planner/:id"
                     element={
                       <ProtectRoute user={user}>
@@ -267,7 +273,7 @@ const AdminSection = () => {
                       </ProtectRoute>
                     }
                   />
-                   <Route
+                  <Route
                     path="beach/:id"
                     element={
                       <ProtectRoute user={user}>
@@ -275,7 +281,7 @@ const AdminSection = () => {
                       </ProtectRoute>
                     }
                   />
-                   <Route
+                  <Route
                     path="music/:id"
                     element={
                       <ProtectRoute user={user}>
@@ -283,7 +289,7 @@ const AdminSection = () => {
                       </ProtectRoute>
                     }
                   />
-                   <Route
+                  <Route
                     path="party/:id"
                     element={
                       <ProtectRoute user={user}>
@@ -291,7 +297,7 @@ const AdminSection = () => {
                       </ProtectRoute>
                     }
                   />
-                   <Route
+                  <Route
                     path="photography/:id"
                     element={
                       <ProtectRoute user={user}>
@@ -299,6 +305,49 @@ const AdminSection = () => {
                       </ProtectRoute>
                     }
                   />
+
+                  {/* Video Section */}
+                  <Route
+                    path="video"
+                    element={
+                      <ProtectRoute user={user}>
+                        <VideoLink user={user} />
+                      </ProtectRoute>
+                    }
+                  />
+                  <Route
+                    path="video/add-video"
+                    element={
+                      <ProtectRoute user={user}>
+                        <AddVideo user={user} />
+                      </ProtectRoute>
+                    }
+                  />
+                  <Route
+                    path="video/add-short-video"
+                    element={
+                      <ProtectRoute user={user}>
+                        <AddShortVideo user={user} />
+                      </ProtectRoute>
+                    }
+                  />
+                  <Route
+                    path="video/:id"
+                    element={
+                      <ProtectRoute user={user}>
+                        <ViewVideo user={user} />
+                      </ProtectRoute>
+                    }
+                  />
+                  <Route
+                    path="shortVideo/:id"
+                    element={
+                      <ProtectRoute user={user}>
+                        <ViewShortVideo user={user} />
+                      </ProtectRoute>
+                    }
+                  />
+
                   <Route
                     path="/feedback"
                     element={

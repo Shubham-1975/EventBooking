@@ -3,6 +3,7 @@ import { IoPersonOutline, IoSettingsOutline } from "react-icons/io5";
 import { CiCreditCard1 } from "react-icons/ci";
 import { Link, useNavigate, NavLink } from "react-router-dom";
 import img from "../../../assets/images/event5.png"
+import { FaVideo } from "react-icons/fa";
 import { useState } from "react";
 import axios from "axios";
 
@@ -61,6 +62,10 @@ const Sidebar = () => {
             <NavLink to="/services" className="sidebar-item">
               <MdLocalShipping className="icon" />
               <span>Services</span>
+            </NavLink>
+            <NavLink to="/video" className="sidebar-item">
+              <FaVideo className="icon" />
+              <span>Video</span>
             </NavLink>
             <NavLink to="/feedback" className="sidebar-item">
               <CiCreditCard1 className="icon" />

@@ -6,7 +6,6 @@ import Home from "../../pages/userPages/Home";
 import Login from "../../pages/userPages/Login";
 import Register from "../../pages/userPages/Register";
 import ForgotPassword from "../../pages/userPages/ForgotPassword";
-import OurPortfolio from "../../pages/userPages/OurPortfolio";
 import BookEvent from "../../pages/userPages/BookEvent";
 import Contact from "../../pages/userPages/Contact";
 import CorporateEvent from "../dashboard/userDashboard/ServicesSection/CorporateEvent";
@@ -21,6 +20,10 @@ import VenueIdShow from "../../pages/userPages/VenueIdShow";
 import WeddingPhotoGraphy from "../dashboard/userDashboard/ServicesSection/WeddingPhotoGraphy";
 import Catering from "../dashboard/userDashboard/ServicesSection/Catering";
 import ViewProfile from "../../pages/userPages/ViewProfile";
+import VideoGallery from "../../pages/userPages/gallery/VideoGallery";
+import ShortGallery from "../../pages/userPages/gallery/ShortGallery";
+import WeddingAlbums from "../../pages/userPages/gallery/WeddingAlbums";
+import OurPortfolio from "../../pages/userPages/gallery/OurPortfolio";
 
 const ProtectedRoute = ({ user, children }) => {
   if (!user) {
@@ -70,22 +73,34 @@ const UserSection = () => {
                   />
                   <Route path="/register" element={<Register />} />
                   <Route path="/contact-us" element={<Contact user={user} />} />
+                  {/* Gallery */}
                   <Route
                     path="/ourportfolio"
                     element={<OurPortfolio user={user} />}
                   />
                   <Route
+                    path="/video-gallery"
+                    element={<VideoGallery user={user} />}
+                  />
+                  <Route
+                    path="/short-gallery"
+                    element={<ShortGallery user={user} />}
+                  />
+                  <Route
+                    path="/wedding-albums"
+                    element={<WeddingAlbums user={user} />}
+                  />
+
+                  {/* Services */}
+                  <Route
                     path="/corporate-event"
                     element={<CorporateEvent user={user} />}
                   />
-                   <Route
+                  <Route
                     path="/wedding-photography"
                     element={<WeddingPhotoGraphy user={user} />}
                   />
-                   <Route
-                    path="/catering"
-                    element={<Catering user={user} />}
-                  />
+                  <Route path="/catering" element={<Catering user={user} />} />
                   <Route
                     path="/wedding-planner"
                     element={<WeddingPlanner user={user} />}
@@ -103,7 +118,7 @@ const UserSection = () => {
                     element={<MusicEntertainment user={user} />}
                   />
                   <Route
-                    path="/private-party"
+                    path="/private-parties"
                     element={<PrivateParty user={user} />}
                   />
                   <Route
@@ -129,7 +144,7 @@ const UserSection = () => {
                       </ProtectedRoute>
                     }
                   />
-                   <Route
+                  <Route
                     path="users/:id"
                     element={
                       <ProtectedRoute user={user}>

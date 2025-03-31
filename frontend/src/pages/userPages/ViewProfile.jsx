@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
 import axios from "axios";
@@ -95,14 +94,19 @@ const ViewProfile = ({ setShowForm, userID, authDispatch }) => {
         onClick={() => setShowForm(false)}
       ></div>
 
-      <div className="relative w-full max-w-md bg-white rounded-lg shadow-lg p-6">
+      <div className="relative w-full max-w-md bg-white rounded-xl shadow-lg p-6">
+        
         {/* Header */}
         <button
-          className="text-black absolute top-4 right-6 text-2xl hover:text-3xl duration-300 "
-          onClick={() => setShowForm(false)}
+          className="text-black absolute top-4 right-6 text-2xl hover:text-3xl duration-300 z-[999] cursor-pointer"
+          onClick={(e) => {
+            e.stopPropagation(); // Stops click from affecting parent elements
+            setShowForm(false);
+          }}
         >
           <FaXmark />
         </button>
+
         <div className="flex flex-col items-center relative">
           {tempImg ? (
             <img

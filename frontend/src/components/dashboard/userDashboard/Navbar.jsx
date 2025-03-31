@@ -107,14 +107,14 @@ const Navbar = ({ user, authDispatch }) => {
                 Services <FaSortDown />
               </span>
               {isServices && (
-                <div className="absolute left-0 mt-2 w-56 bg-black bg-opacity-10 shadow-lg rounded-lg py-2 text-[#7a2399] text-[14px] backdrop-blur-md">
+                <div className="absolute left-0 mt-2 w-56 bg-black bg-opacity-60 shadow-lg rounded-lg py-2 text-[14px] backdrop-blur-md">
                   <NavLink
                     style={navLinkStyles}
                     to="/corporate-event"
                     className={`block px-4 py-3 transition-all duration-300 rounded-t-lg 
           ${
             activeMenu === "Corporate"
-              ? "bg-[#636262] bg-opacity-20 text-[#7a2399]"
+              ? "bg-[#2e2e2e] bg-opacity-60"
               : "hover:bg-gray-800 hover:text-[#7a2399]"
           }`}
                     onMouseEnter={() => handleActiveMenu("Corporate")}
@@ -128,7 +128,7 @@ const Navbar = ({ user, authDispatch }) => {
                     className={`block px-4 py-3 transition-all duration-300 
           ${
             activeMenu === "planner"
-              ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
+              ? "bg-[#2e2e2e] bg-opacity-60"
               : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                     onMouseEnter={() => handleActiveMenu("planner")}
@@ -142,7 +142,7 @@ const Navbar = ({ user, authDispatch }) => {
                     className={`block px-4 py-3 transition-all duration-300 
           ${
             activeMenu === "wedding"
-              ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
+              ? "bg-[#2e2e2e] bg-opacity-60"
               : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                     onMouseEnter={() => handleActiveMenu("wedding")}
@@ -156,7 +156,7 @@ const Navbar = ({ user, authDispatch }) => {
                     className={`block px-4 py-3 transition-all duration-300 rounded-b-lg 
           ${
             activeMenu === "catering"
-              ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
+              ? "bg-[#2e2e2e] bg-opacity-60"
               : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                     onMouseEnter={() => handleActiveMenu("catering")}
@@ -170,7 +170,7 @@ const Navbar = ({ user, authDispatch }) => {
                     className={`block px-4 py-3 transition-all duration-300 rounded-b-lg 
           ${
             activeMenu === "beach"
-              ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
+              ? "bg-[#2e2e2e] bg-opacity-60"
               : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                     onMouseEnter={() => handleActiveMenu("beach")}
@@ -180,11 +180,11 @@ const Navbar = ({ user, authDispatch }) => {
                   </NavLink>
                   <NavLink
                     style={navLinkStyles}
-                    to="/music"
+                    to="/music-entertainment"
                     className={`block px-4 py-3 transition-all duration-300 rounded-b-lg 
           ${
             activeMenu === "music"
-              ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
+              ? "bg-[#2e2e2e] bg-opacity-60"
               : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                     onMouseEnter={() => handleActiveMenu("music")}
@@ -198,7 +198,7 @@ const Navbar = ({ user, authDispatch }) => {
                     className={`block px-4 py-3 transition-all duration-300 rounded-b-lg 
           ${
             activeMenu === "Private"
-              ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
+              ? "bg-[#2e2e2e] bg-opacity-60"
               : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                     onMouseEnter={() => handleActiveMenu("Private")}
@@ -218,15 +218,15 @@ const Navbar = ({ user, authDispatch }) => {
                 Gallery <FaSortDown />
               </span>
               {isGallery && (
-                <div className="absolute left-0 mt-2 w-56 bg-[#767575] bg-opacity-10 shadow-lg rounded-lg py-2 text-white backdrop-blur-md">
+                <div className="absolute left-0 mt-2 w-56 bg-black bg-opacity-60 shadow-lg rounded-lg py-2 text-[14px] backdrop-blur-md">
                   <NavLink
                     style={navLinkStyles}
                     to="/ourportfolio"
                     className={`block px-4 py-3 transition-all duration-300 rounded-t-lg 
           ${
             activeMenu === "photo"
-              ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
-              : "hover:bg-gray-800 hover:text-[#af43ca]"
+              ? "bg-[#2e2e2e] bg-opacity-60 text-bg-gray-800"
+              : "hover:bg-[#0a0a hover:text-[#af43ca]"
           }`}
                     onMouseEnter={() => handleActiveMenu("photo")}
                     onMouseLeave={() => handleActiveMenu("")}
@@ -239,7 +239,7 @@ const Navbar = ({ user, authDispatch }) => {
                     className={`block px-4 py-3 transition-all duration-300 
           ${
             activeMenu === "video"
-              ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
+              ? "bg-[#2e2e2e] bg-opacity-60"
               : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                     onMouseEnter={() => handleActiveMenu("video")}
@@ -253,7 +253,7 @@ const Navbar = ({ user, authDispatch }) => {
                     className={`block px-4 py-3 transition-all duration-300 
           ${
             activeMenu === "short"
-              ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
+              ? "bg-[#2e2e2e] bg-opacity-60"
               : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                     onMouseEnter={() => handleActiveMenu("short")}
@@ -267,7 +267,7 @@ const Navbar = ({ user, authDispatch }) => {
                     className={`block px-4 py-3 transition-all duration-300 rounded-b-lg 
           ${
             activeMenu === "wedding"
-              ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
+              ? "bg-[#2e2e2e] bg-opacity-60"
               : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                     onMouseEnter={() => handleActiveMenu("wedding")}
@@ -443,11 +443,11 @@ const Navbar = ({ user, authDispatch }) => {
                   {isServices && (
                     <div className="absolute left-0 mt-2 w-full bg-[#2d2d2d] opacity-90  shadow-lg rounded-lg py-2 text-white text-[14px] backdrop-blur-md">
                       <NavLink
-                        to="/corporat-event"
+                        to="/corporate-event"
                         className={`block px-4 py-3 transition-all duration-300 rounded-t-lg 
           ${
             activeMenu === "Corporate"
-              ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
+              ? "bg-[#2e2e2e] bg-opacity-60"
               : "hover:bg-gray-800 hover:hover:text-[#af43ca]"
           }`}
                         onMouseEnter={() => handleActiveMenu("Corporate")}
@@ -460,7 +460,7 @@ const Navbar = ({ user, authDispatch }) => {
                         className={`block px-4 py-3 transition-all duration-300 
           ${
             activeMenu === "planner"
-              ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
+              ? "bg-[#2e2e2e] bg-opacity-60"
               : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                         onMouseEnter={() => handleActiveMenu("planner")}
@@ -473,7 +473,7 @@ const Navbar = ({ user, authDispatch }) => {
                         className={`block px-4 py-3 transition-all duration-300 
           ${
             activeMenu === "wedding"
-              ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
+              ? "bg-[#2e2e2e] bg-opacity-60"
               : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                         onMouseEnter={() => handleActiveMenu("wedding")}
@@ -486,7 +486,7 @@ const Navbar = ({ user, authDispatch }) => {
                         className={`block px-4 py-3 transition-all duration-300 rounded-b-lg 
           ${
             activeMenu === "catering"
-              ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
+              ? "bg-[#2e2e2e] bg-opacity-60"
               : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                         onMouseEnter={() => handleActiveMenu("catering")}
@@ -495,11 +495,11 @@ const Navbar = ({ user, authDispatch }) => {
                         Catering Service
                       </NavLink>
                       <NavLink
-                        to="/wedding-albums"
+                        to="/beach-wedding"
                         className={`block px-4 py-3 transition-all duration-300 rounded-b-lg 
           ${
             activeMenu === "beach"
-              ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
+              ? "bg-[#2e2e2e] bg-opacity-60"
               : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                         onMouseEnter={() => handleActiveMenu("beach")}
@@ -508,11 +508,11 @@ const Navbar = ({ user, authDispatch }) => {
                         Beach Wedding
                       </NavLink>
                       <NavLink
-                        to="/music"
+                        to="/music-entertainment"
                         className={`block px-4 py-3 transition-all duration-300 rounded-b-lg 
           ${
             activeMenu === "music"
-              ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
+              ? "bg-[#2e2e2e] bg-opacity-60"
               : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                         onMouseEnter={() => handleActiveMenu("music")}
@@ -521,11 +521,11 @@ const Navbar = ({ user, authDispatch }) => {
                         Music & Entertainment
                       </NavLink>
                       <NavLink
-                        to="/private-parties"
+                        to="/private-party"
                         className={`block px-4 py-3 transition-all duration-300 rounded-b-lg 
           ${
             activeMenu === "Private"
-              ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
+              ? "bg-[#2e2e2e] bg-opacity-60"
               : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                         onMouseEnter={() => handleActiveMenu("Private")}
@@ -550,7 +550,7 @@ const Navbar = ({ user, authDispatch }) => {
                         className={`block px-4 py-3 transition-all duration-300 rounded-t-lg 
           ${
             activeMenu === "photo"
-              ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
+              ? "bg-[#2e2e2e] bg-opacity-60"
               : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                         onMouseEnter={() => handleActiveMenu("photo")}
@@ -563,7 +563,7 @@ const Navbar = ({ user, authDispatch }) => {
                         className={`block px-4 py-3 transition-all duration-300 
           ${
             activeMenu === "video"
-              ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
+              ? "bg-[#2e2e2e] bg-opacity-60"
               : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                         onMouseEnter={() => handleActiveMenu("video")}
@@ -576,7 +576,7 @@ const Navbar = ({ user, authDispatch }) => {
                         className={`block px-4 py-3 transition-all duration-300 
           ${
             activeMenu === "short"
-              ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
+              ? "bg-[#2e2e2e] bg-opacity-60"
               : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                         onMouseEnter={() => handleActiveMenu("short")}
@@ -589,7 +589,7 @@ const Navbar = ({ user, authDispatch }) => {
                         className={`block px-4 py-3 transition-all duration-300 rounded-b-lg 
           ${
             activeMenu === "wedding"
-              ? "bg-[#636262] bg-opacity-20 text-bg-gray-800"
+              ? "bg-[#2e2e2e] bg-opacity-60"
               : "hover:bg-gray-800 hover:text-[#af43ca]"
           }`}
                         onMouseEnter={() => handleActiveMenu("wedding")}
