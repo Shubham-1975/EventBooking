@@ -34,7 +34,7 @@ const Footer = () => {
       <div className="absolute lg:top-[18%] md:top-[15%] sm:top-[60%] sm:left-[2%] top-[8%] lg:left-[15%] left-[10%] flex items-center  text-[#a09f9f] sm:max-w-[900px] max-w-full sm:px-4 pr-2  text-start justify-center">
         <p className="text-sm sm:text-[14px] leading-relaxed">
           Planning a full event has never been easier!{" "}
-          <NavLink to="/" className="font-semibold text-yellow-300">
+          <NavLink to="/" className="font-semibold text-[#a032b7]">
             DreamAmbition®
           </NavLink>
           Event Management, an ISO 0000:2025 Certified Event Management Company
@@ -48,7 +48,7 @@ const Footer = () => {
           in Bihar. We exclusively operate within Bihar. Whether you are
           planning a destination wedding event or a local celebration in Bihar,
           India,
-          <NavLink to="/" className="font-semibold text-yellow-300">
+          <NavLink to="/" className="font-semibold text-[#a032b7]">
             DreamAmbition®
           </NavLink>
           is here to help.
@@ -61,7 +61,7 @@ const Footer = () => {
           <ul className="space-y-2">
             <li>
               <NavLink
-                className="hover:text-yellow-400 transition-all duration-300"
+                className="hover:text-[#a032b7] transition-all duration-300"
                 to="/"
               >
                 Home
@@ -69,32 +69,32 @@ const Footer = () => {
             </li>
             <li>
               <NavLink
-                className="hover:text-yellow-400 transition-all duration-300"
-                to="/venue"
+                className="hover:text-[#a032b7] transition-all duration-300"
+                to="/find-venue"
               >
-                Venue
+                Find Venue
               </NavLink>
             </li>
             <li>
               <NavLink
-                className="hover:text-yellow-400 transition-all duration-300"
-                to="/portfolio"
+                className="hover:text-[#a032b7] transition-all duration-300"
+                to="/ourportfolio"
               >
-                Gallery
+                Our Gallery
               </NavLink>
             </li>
             <li>
               <NavLink
-                className="hover:text-yellow-400 transition-all duration-300"
-                to="/bookevent"
+                className="hover:text-[#a032b7] transition-all duration-300"
+                to="/yourbooking"
               >
-                Book Event
+                Booking
               </NavLink>
             </li>
             <li>
               <NavLink
-                className="hover:text-yellow-400 transition-all duration-300"
-                to="/contact"
+                className="hover:text-[#a032b7] transition-all duration-300"
+                to="/contact-us"
               >
                 Contact
               </NavLink>
@@ -108,7 +108,7 @@ const Footer = () => {
           <ul className="space-y-2">
             <li>
               <NavLink
-                className="hover:text-yellow-400 transition-all duration-300"
+                className="hover:text-[#a032b7] transition-all duration-300"
                 to="/corporate-event"
               >
                 Corporate Events
@@ -116,7 +116,7 @@ const Footer = () => {
             </li>
             <li>
               <NavLink
-                className="hover:text-yellow-400 transition-all duration-300"
+                className="hover:text-[#a032b7] transition-all duration-300"
                 to="/wedding-planner"
               >
                 Wedding Planner
@@ -124,15 +124,15 @@ const Footer = () => {
             </li>
             <li>
               <NavLink
-                className="hover:text-yellow-400 transition-all duration-300"
-                to="/music"
+                className="hover:text-[#a032b7] transition-all duration-300"
+                to="/music-entertainment"
               >
                 Music & Entertainment
               </NavLink>
             </li>
             <li>
               <NavLink
-                className="hover:text-yellow-400 transition-all duration-300"
+                className="hover:text-[#a032b7] transition-all duration-300"
                 to="/private-parties"
               >
                 Private Parties
@@ -140,7 +140,7 @@ const Footer = () => {
             </li>
             <li>
               <NavLink
-                className="hover:text-yellow-400 transition-all duration-300"
+                className="hover:text-[#a032b7] transition-all duration-300"
                 to="/destination-wedding"
               >
                 Destination Wedding
@@ -155,7 +155,7 @@ const Footer = () => {
           <ul className="space-y-2">
             <li>
               <NavLink
-                className="hover:text-yellow-400 transition-all duration-300"
+                className="hover:text-[#a032b7] transition-all duration-300"
                 to="/blog"
               >
                 Blog
@@ -163,7 +163,7 @@ const Footer = () => {
             </li>
             <li>
               <NavLink
-                className="hover:text-yellow-400 transition-all duration-300"
+                className="hover:text-[#a032b7] transition-all duration-300"
                 to="/testimonials"
               >
                 Testimonials
@@ -171,7 +171,7 @@ const Footer = () => {
             </li>
             <li>
               <NavLink
-                className="hover:text-yellow-400 transition-all duration-300"
+                className="hover:text-[#a032b7] transition-all duration-300"
                 to="/privacy-policy"
               >
                 Privacy Policy
@@ -179,7 +179,7 @@ const Footer = () => {
             </li>
             <li>
               <NavLink
-                className="hover:text-yellow-400 transition-all duration-300"
+                className="hover:text-[#a032b7] transition-all duration-300"
                 to="/cancellation"
               >
                 Cancellation & Refund Policy
@@ -187,7 +187,7 @@ const Footer = () => {
             </li>
             <li>
               <NavLink
-                className="hover:text-yellow-400 transition-all duration-300"
+                className="hover:text-[#a032b7] transition-all duration-300"
                 to="/terms-of-service"
               >
                 Terms of Service
@@ -201,16 +201,16 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-3">Contact Info</h3>
           <ul className="space-y-3">
             <li className="flex items-center gap-2">
-              <IoLocationSharp className="text-yellow-400 text-xl" />
+              <IoLocationSharp className="text-[#a032b7] text-xl" />
               DreamAmbition Event Management, Chandani Chowk, Sheikhpura, Bihar
               811103
             </li>
             <li className="flex items-center gap-2">
-              <IoLocationSharp className="text-yellow-400 text-xl" />
+              <IoLocationSharp className="text-[#a032b7] text-xl" />
               DreamAmbition Event Management, Boring Road, Patna, Bihar 800013
             </li>
             <li className="flex items-center gap-2">
-              <IoLocationSharp className="text-yellow-400 text-xl" />
+              <IoLocationSharp className="text-[#a032b7] text-xl" />
               DreamAmbition Event Management, near Gaya Junction, Gaya, Bihar
               830013
             </li>
@@ -219,7 +219,7 @@ const Footer = () => {
       </div>
       <div className="absolute lg:bottom-[20%] md:bottom-[13%] right-[20%] bottom-[98%] sm:gap-10 gap-4 sm:text-[23px] text-white list-none flex">
         <li
-          className="hover:text-yellow-400 transition-all duration-300 cursor-pointer"
+          className="hover:text-[#a032b7] transition-all duration-300 cursor-pointer"
           target="_blank"
         >
           <a href="#">
@@ -227,7 +227,7 @@ const Footer = () => {
           </a>
         </li>
         <li
-          className="hover:text-yellow-400 transition-all duration-300 cursor-pointer"
+          className="hover:text-[#a032b7] transition-all duration-300 cursor-pointer"
           target="_blank"
         >
           <a href="#">
@@ -235,7 +235,7 @@ const Footer = () => {
           </a>
         </li>
         <li
-          className="hover:text-yellow-400 transition-all duration-300 cursor-pointer"
+          className="hover:text-[#a032b7] transition-all duration-300 cursor-pointer"
           target="_blank"
         >
           <a href="#">
@@ -243,7 +243,7 @@ const Footer = () => {
           </a>
         </li>
         <li
-          className="hover:text-yellow-400 transition-all duration-300 cursor-pointer"
+          className="hover:text-[#a032b7] transition-all duration-300 cursor-pointer"
           target="_blank"
         >
           <a href="#">
@@ -251,7 +251,7 @@ const Footer = () => {
           </a>
         </li>
         <li
-          className="hover:text-yellow-400 transition-all duration-300 cursor-pointer"
+          className="hover:text-[#a032b7] transition-all duration-300 cursor-pointer"
           target="_blank"
         >
           <a href="#">
@@ -275,8 +275,13 @@ const Footer = () => {
         </div>
         <hr className="max-w-[1000px] mx-auto border-t border-white pt-4" />
       </div>
-      <h1 className="text-[#c0bbbb] sm:text-[15px] text-[13px] absolute bottom-[8px] md:bottom-[1%] text-center md:left-[28%] left-4 lg:left-[33%] lg:bottom-[2%]">© {new Date().getFullYear()} Dream AmbitionEvent Management. All Rights Reserved.</h1>
-      <h1 className="text-[#706e6e] sm:text-[15px] text-[13px] absolute bottom-[9%] md:bottom-[1%] text-center pl-[25%] right-2">😍Shubham Rawat😍</h1>
+      <h1 className="text-[#c0bbbb] sm:text-[15px] text-[13px] absolute bottom-[8px] md:bottom-[1%] text-center md:left-[28%] left-4 lg:left-[33%] lg:bottom-[2%]">
+        © {new Date().getFullYear()} Dream AmbitionEvent Management. All Rights
+        Reserved.
+      </h1>
+      <h1 className="text-[#706e6e] sm:text-[15px] text-[13px] absolute bottom-[9%] md:bottom-[1%] text-center pl-[25%] right-2">
+        😍Shubham Rawat😍
+      </h1>
     </div>
   );
 };

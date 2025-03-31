@@ -41,13 +41,13 @@ const WeddingPlanner = ({ user }) => {
           </p>
           <div className="flex gap-5 mt-6">
             <button
-              className="flex items-center gap-2 bg-gradient-to-r from-blue-500 via-blue-400/60 to-yellow-400 text-black px-4 py-2 rounded-full text-sm md:text-lg hover:bg-blue-700 transition-all delay-300"
+              className="flex items-center gap-2 bg-gradient-to-r from-[#a914c7] via-[#ac2bc6] to-[#af5fbe] px-4 py-1 rounded-full text-sm md:text-lg font-normal hover:from-[#af5fbe] hover:via-[#ac2bc6] hover:to-[#a914c7] transition-all duration-500"
               onClick={() => setShowForm(true)}
             >
               <MdOutlineWifiCalling3 /> Talk to Expert
             </button>
             {showForm && <TalkToExpert setShowForm={setShowForm} />}
-            <button className="flex items-center gap-2 bg-gradient-to-r from-green-500 via-green-400/60 to-yellow-400 text-black px-4 py-2 rounded-full text-sm md:text-lg hover:bg-green-700 transition-all delay-200">
+            <button className="flex items-center gap-2 bg-gradient-to-r from-[#00ff1a] via-[#12c912] to-[#12b312] px-4 py-1 rounded-full text-sm md:text-lg font-normal text-[#f8f0f0] hover:from-[#12b312] hover:via-[#12c912] hover:to-[#00ff1a] transition-all delay-200">
               <a
                 href="https://wa.me/917070243030"
                 target="_blank"

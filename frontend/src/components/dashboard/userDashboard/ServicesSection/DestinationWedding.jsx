@@ -85,7 +85,7 @@ const DestinationWedding = ({ user }) => {
                 <MdOutlineWifiCalling3 /> Talk to Expert
               </button>
               {showForm && <TalkToExpert setShowForm={setShowForm} />}
-              <button className="flex items-center gap-2 bg-gradient-to-r from-green-500 via-green-400/60 to-yellow-400 text-black px-4 py-2 rounded-full text-sm md:text-lg hover:bg-green-700 transition-all delay-200">
+              <button className="bg-gradient-to-r from-[#19943c] via-[#0cac41] to-[#17b732] px-6 py-3 mt-5 rounded-full text-lg font-medium hover:from-[#3eaa3b] hover:via-[#48cb0c] hover:to-[#42b22e] transition-all duration-300 flex gap-2 items-center text-[#eae9e9]">
                 <a
                   href="https://wa.me/917070243030"
                   target="_blank"
