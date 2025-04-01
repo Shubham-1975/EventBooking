@@ -29,10 +29,10 @@ const TalkToExpert = ({ setShowForm }) => {
   };
   return (
     <>
-      <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50" onClick={()=>setShowForm(false)}>
+      <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
         {/* Form Container */}
         <div className="bg-white p-6 rounded-lg shadow-lg w-[90%] h-[450px] max-w-[600px] mx-auto relative">
-          <h2 className="text-sm font-semibold mb-1 text-[#923a94]">
+          <h2 className="text-sm font-semibold mb-1 text-[#923a94] ">
             DreamAmbition Event
           </h2>
           <h2 className="text-xl font-semibold mb-1 text-[black]">

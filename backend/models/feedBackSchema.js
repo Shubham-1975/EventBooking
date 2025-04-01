@@ -22,12 +22,6 @@ const feedBackSchema = mongoose.Schema({
   },
 });
 
-const suggestionSchema = mongoose.Schema({
-  message: {
-    type: String,
-    required: true,
-  },
-});
-
-module.exports = mongoose.model("message", feedBackSchema);
-module.exports = mongoose.model("suggestion", suggestionSchema);
+module.exports = {
+  FeedBack: mongoose.model("feedback", feedBackSchema),
+};

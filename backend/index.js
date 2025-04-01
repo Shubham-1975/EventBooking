@@ -7,7 +7,6 @@ const cors = require("cors");
 const db = require("./db");
 const authRoute = require("./routes/authRoutes");
 const feedBackRoute = require("./routes/feedBackRoute");
-const suggestionRoutes = require("./routes/suggestionRoutes");
 const eventRoute = require("./routes/eventRoute");
 const userRoute = require("./routes/userRoutes");
 const eventBook = require("./routes/eventBookRoute");
@@ -36,7 +35,6 @@ app.use(express.json());
 
 app.use("/auth", authRoute);
 app.use("/feedback", feedBackRoute);
-app.use("/suggestion", suggestionRoutes);
 app.use("/events", eventRoute);
 app.use("/users", userRoute);
 app.use("/eventbooks", eventBook);
