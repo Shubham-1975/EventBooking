@@ -24,6 +24,8 @@ import VideoGallery from "../../pages/userPages/gallery/VideoGallery";
 import ShortGallery from "../../pages/userPages/gallery/ShortGallery";
 import WeddingAlbums from "../../pages/userPages/gallery/WeddingAlbums";
 import OurPortfolio from "../../pages/userPages/gallery/OurPortfolio";
+import GeneratePDF from "../../pages/userPages/GeneratePDF";
+import Payment from "../../pages/userPages/Payment";
 
 const ProtectedRoute = ({ user, children }) => {
   if (!user) {
@@ -137,6 +139,23 @@ const UserSection = () => {
                   />
 
                   <Route
+                    path="/generate-pdf"
+                    element={
+                      <ProtectedRoute user={user}>
+                        <GeneratePDF user={user} />
+                      </ProtectedRoute>
+                    }
+                  />
+                   <Route
+                    path="/payment"
+                    element={
+                      <ProtectedRoute user={user}>
+                        <Payment user={user} />
+                      </ProtectedRoute>
+                    }
+                  />
+
+                  <Route
                     path="find/:id"
                     element={
                       <ProtectedRoute user={user}>
@@ -160,6 +179,7 @@ const UserSection = () => {
                       </ProtectedRoute>
                     }
                   />
+
                 </Routes>
               </BrowserRouter>
             </>

@@ -48,7 +48,7 @@ const BookEvent = ({ user }) => {
     venueTitle: venue?.title || "",
     venueType: venue?.type || "",
     venueId: venue?._id,
-    userId: user?._id
+    userId: user?._id,
   });
 
   useEffect(() => {
@@ -74,10 +74,12 @@ const BookEvent = ({ user }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData) {
-      toast.error("Please fill in all fields");
+
+    if (!formData || !formData.eventMainDates) {
+      toast.error("Please fill in all required fields");
       return;
     }
+
     const isAlreadyBooked = list.some(
       (event) =>
         event.venueId === formData.venueId &&
@@ -88,14 +90,16 @@ const BookEvent = ({ user }) => {
       toast.error("This venue is already booked on the selected date!");
       return;
     }
-    try {
-      await axios.post(`${import.meta.env.VITE_SERVER}/eventbooks`, formData, {
-        withCredentials: true,
-      });
-      toast.success("Your event booking is successful!");
-    } catch (err) {
-      toast.error("Something went wrong. Please try again.");
-    }
+
+    const minimumAmount = 5000;
+
+    // Send user to payment page with formData
+    navigate("/payment", {
+      state: {
+        formData,
+        amount: minimumAmount,
+      },
+    });
   };
 
   return (
@@ -315,7 +319,7 @@ const BookEvent = ({ user }) => {
             type="submit"
             className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
           >
-            Submit
+            Pay Now
           </button>
         </form>
       </div>

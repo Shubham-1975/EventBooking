@@ -41,9 +41,12 @@ const WeddingAlbums = ({ user }) => {
       title: "Birthday Celebration",
       images: list[2]?.photos?.slice(0, 8) || [],
     },
-    { title: "Music Concert", images: list[3]?.photos?.slice(0, 8) || [] },
     {
       title: "Photography Moments",
+      images: list[3]?.photos?.slice(0, 8) || [],
+    },
+    {
+      title: "Music Concert",
       images: list[4]?.photos?.slice(0, 8) || [],
     },
   ];
@@ -93,7 +96,7 @@ const WeddingAlbums = ({ user }) => {
           event.images.length > 0 ? (
             <div key={index} className="mb-16" data-aos="fade-up">
               {/* Event Title */}
-              <h2 className="text-center text-yellow-400 font-serif text-3xl font-semibold mb-6">
+              <h2 className="text-center text-[#a914c7] font-serif text-3xl font-semibold mb-6">
                 {event.title}
               </h2>
 
@@ -118,7 +121,7 @@ const WeddingAlbums = ({ user }) => {
         )}
 
         <div className="flex justify-center mx-auto pt-10">
-          <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-5 py-3 rounded-lg shadow-md transition-transform duration-200 hover:scale-105">
+          <button className="bg-[#c835e6] hover:bg-[#a914c7] text-[#f1e5e5] font-semibold px-5 py-3 rounded-lg shadow-md transition-transform duration-200 hover:scale-105">
             Explore More
           </button>
         </div>

@@ -27,7 +27,7 @@ router.post("/register", async (req, res, next) => {
 
 router.post("/login", async (req, res, next) => {
   try {
-    const user = await User.findOne({ username: req.body.username });
+    const user = await User.findOne({ email: req.body.email });
     if (!user) return res.status(404).json({ error: "user not found" });
 
     const isPasswordCorrect = await bcrypt.compare(
@@ -35,7 +35,7 @@ router.post("/login", async (req, res, next) => {
       user.password
     );
     if (!isPasswordCorrect)
-      return res.status(404).json({ error: "wrong password or username" });
+      return res.status(404).json({ error: "wrong password or email" });
 
     const token = jwt.sign(
       { id: user._id, isAdmin: user.isAdmin },

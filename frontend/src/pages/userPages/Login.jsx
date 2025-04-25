@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 const Login = ({ authLoading, authError, authDispatch }) => {
   const [credentials, setCredentials] = useState({
-    username: "",
+    email: "",
     password: "",
   });
   const navigate = useNavigate();
@@ -24,6 +24,7 @@ const Login = ({ authLoading, authError, authDispatch }) => {
         credentials, // Correctly send credentials as data
         { withCredentials: true } // Configuration object
       );
+      console.log(res);
       authDispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       toast.success("Login Succesfull!");
       navigate("/");
@@ -56,9 +57,9 @@ const Login = ({ authLoading, authError, authDispatch }) => {
           </h1>
           <div className="space-y-4">
             <input
-              type="text"
-              id="username"
-              placeholder="Username"
+              type="email"
+              id="email"
+              placeholder="Enter Your Email"
               onChange={handleChange}
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
@@ -89,7 +90,10 @@ const Login = ({ authLoading, authError, authDispatch }) => {
               <Link to="/register">
                 <div className="flex gap-2 justify-center items-center text-[15px]">
                   <p className="text-white">Not a Member ?</p>
-                  <span className="text-blue-500 hover:underline hover:scale-110 duration-500"> Signup</span>
+                  <span className="text-blue-500 hover:underline hover:scale-110 duration-500">
+                    {" "}
+                    Signup
+                  </span>
                 </div>
               </Link>
               <Link

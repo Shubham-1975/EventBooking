@@ -5,6 +5,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { FaXmark } from "react-icons/fa6";
 import useFetch from "../../hooks/useFetch";
+import { Lock } from "lucide-react"; // Import lock icon from Lucide or use FontAwesome
 
 const ViewProfile = ({ setShowForm, userID, authDispatch }) => {
   const { data } = useFetch(`${import.meta.env.VITE_SERVER}/users/${userID}`);
@@ -95,7 +96,6 @@ const ViewProfile = ({ setShowForm, userID, authDispatch }) => {
       ></div>
 
       <div className="relative w-full max-w-md bg-white rounded-xl shadow-lg p-6">
-        
         {/* Header */}
         <button
           className="text-black absolute top-4 right-6 text-2xl hover:text-3xl duration-300 z-[999] cursor-pointer"
@@ -165,27 +165,28 @@ const ViewProfile = ({ setShowForm, userID, authDispatch }) => {
             { label: "Country", name: "country" },
           ].map((field) => (
             <div
-              className="flex justify-between border-b pb-2"
+              className="flex justify-between items-center border-b pb-2"
               key={field.name}
             >
               <span className="font-semibold text-gray-700">
                 {field.label}:
               </span>
-              <input
-                type="text"
-                name={field.name}
-                value={editableUser[field.name] || ""}
-                onChange={handleInputChange}
-                className="text-gray-600 border-b focus:outline-none text-right"
-              />
+              <div className="flex items-center gap-2">
+                <input
+                  type="text"
+                  name={field.name}
+                  disabled={field.name === "email"} // Disable only "Email" field
+                  value={editableUser[field.name] || ""}
+                  onChange={handleInputChange}
+                  className="text-gray-600 border-b focus:outline-none text-right disabled:opacity-50 disabled:cursor-not-allowed"
+                />
+                {field.name === "email" && (
+                  <Lock size={16} className="text-gray-500" />
+                )}{" "}
+                {/* Show lock icon */}
+              </div>
             </div>
           ))}
-
-          {/* Admin Field */}
-          <div className="flex justify-between border-b pb-2">
-            <span className="font-semibold text-gray-700">Admin:</span>
-            <span className="text-gray-600">{user.isAdmin ? "Yes" : "No"}</span>
-          </div>
         </div>
 
         {/* Save Button */}

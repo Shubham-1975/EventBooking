@@ -26,6 +26,10 @@ const Navbar = ({ user, authDispatch }) => {
   const handleLogin = () => {
     navigate("/login");
   };
+
+  const handleSignUp = () => {
+    navigate("/register");
+  };
   const handleSignOut = async (e) => {
     e.preventDefault();
     try {
@@ -331,12 +335,20 @@ const Navbar = ({ user, authDispatch }) => {
                     {user ? (
                       ""
                     ) : (
-                      <li
-                        className="px-4 py-2 hover:bg-yellow-100 cursor-pointer"
-                        onClick={handleLogin}
-                      >
-                        Sign In
-                      </li>
+                      <>
+                        <li
+                          className="px-4 py-2 hover:bg-yellow-100 cursor-pointer"
+                          onClick={handleLogin}
+                        >
+                          Sign In
+                        </li>
+                        <li
+                          className="px-4 py-2 hover:bg-yellow-100 cursor-pointer"
+                          onClick={handleSignUp}
+                        >
+                          Sign Up
+                        </li>
+                      </>
                     )}
                     {user ? (
                       <li
